@@ -1,0 +1,3149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safemate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styles - Pink Gradient Background */
+        body {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #ffffff 0%, #fef3f7 100%);
+            padding: 15px 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(236, 72, 153, 0.15);
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            border: 2px solid rgba(236, 72, 153, 0.2);
+        }
+
+        header h1 {
+            color: #ec4899;
+            font-size: 28px;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(236, 72, 153, 0.1);
+        }
+
+        /* Header - Logout button positioned right */
+        .header-right {
+            position: absolute;
+            right: 20px;
+        }
+
+        /* Logout Button */
+        .logout-btn {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+        }
+
+        /* Container */
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Page Title */
+        .page-title {
+            text-align: center;
+            color: #ffffff;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.5px;
+        }
+
+        /* Card Styles */
+        .card {
+            background: linear-gradient(145deg, #ffffff 0%, #f8f4f6 100%);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 15px;
+            box-shadow: 0 8px 32px rgba(236, 72, 153, 0.12);
+            border: 1px solid rgba(236, 72, 153, 0.15);
+        }
+
+        /* Role Card */
+        .role-card {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: 0.3s;
+            background: linear-gradient(145deg, #ffffff 0%, #fdf2f8 100%);
+        }
+
+        .role-card:hover {
+            border-color: rgba(236, 72, 153, 0.5);
+            background: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(236, 72, 153, 0.15);
+        }
+
+        .role-info h3 {
+            color: #1a1a2e;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .role-info p {
+            color: #4a4a6a;
+            font-size: 14px;
+        }
+
+        /* Login Card */
+        .login-card {
+            background: linear-gradient(145deg, #ffffff 0%, #fdf2f8 100%);
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(236, 72, 153, 0.15);
+            max-width: 450px;
+            margin: 0 auto;
+            border: 1px solid rgba(236, 72, 153, 0.1);
+        }
+
+        .login-card h2 {
+            text-align: center;
+            color: #1a1a2e;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        /* Form Groups */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #2d2d44;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e8e0e5;
+            border-radius: 12px;
+            font-size: 15px;
+            background: #fafafa;
+            color: #1a1a2e;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder {
+            color: #9ca3af;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #ec4899;
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.1);
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #ec4899, #f472b6);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(236, 72, 153, 0.4);
+        }
+
+        /* Switch Link */
+        .switch-link {
+            text-align: center;
+            margin-top: 20px;
+            color: #4a4a6a;
+        }
+
+        .switch-link a {
+            color: #ec4899;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* Switch Link */
+        .switch-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Dashboard */
+        .dashboard {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .dashboard h2 {
+            color: #ffffff;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .dashboard-section {
+            margin-bottom: 25px;
+        }
+
+        .dashboard-section h3 {
+            color: #1a1a2e;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .dashboard-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f8f4f6 100%);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.08);
+            border: 1px solid rgba(236, 72, 153, 0.08);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #fce7f3, #fbcfe8);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-card h4 {
+            color: #be185d;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .stat-card .value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ec4899;
+        }
+
+        .stat-card p {
+            color: #666;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        /* Availability Toggle */
+        .availability-toggle {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: #f9fafb;
+            border-radius: 12px;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 26px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 34px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background: linear-gradient(135deg, #ec4899, #f472b6);
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(24px);
+        }
+
+        .availability-status {
+            font-weight: 500;
+            color: #10b981;
+        }
+
+        .availability-status.offline {
+            color: #ef4444;
+        }
+
+        /* Request Card */
+        .request-card {
+            border-left: 4px solid #ec4899;
+            background: #fdf2f8;
+        }
+
+        .request-card .route {
+            color: #555;
+            font-size: 14px;
+            margin: 8px 0;
+        }
+
+        .request-card .meta {
+            color: #888;
+            font-size: 13px;
+            margin: 5px 0;
+        }
+
+        .request-card .price {
+            color: #ec4899;
+            font-weight: 600;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .accept-btn,
+        .decline-btn {
+            flex: 1;
+            padding: 12px;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .accept-btn {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+
+        .decline-btn {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+
+        /* Completed Card */
+        .completed-card {
+            background: #f0fdf4;
+            border-left: 4px solid #10b981;
+        }
+
+        /* Review Card */
+        .review-card {
+            border-left: 4px solid #ec4899;
+            background: #fdf2f8;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .review-card h4 {
+            color: #ec4899;
+            margin-bottom: 8px;
+        }
+
+        .review-card p {
+            color: #555;
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+
+        .review-card small {
+            color: #888;
+        }
+
+        /* Write Review Section */
+        .write-review {
+            background: linear-gradient(135deg, #fce7f3, #fbcfe8);
+            padding: 25px;
+            border-radius: 16px;
+            margin-top: 20px;
+        }
+
+        .write-review h4 {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        /* Utility Classes */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Service Grid */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .service-card h4 {
+            color: #333;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .service-card .service-type {
+            color: #ec4899;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .booking-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #ec4899, #f472b6);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 12px;
+        }
+
+        /* Planner Form */
+        .planner-form {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .planner-form .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .planner-form select,
+        .planner-form input {
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+
+        .planner-form select:focus,
+        .planner-form input:focus {
+            outline: none;
+            border-color: #ec4899;
+        }
+
+        /* Place Card */
+        .place-card {
+            background: linear-gradient(135deg, #fdf2f8, #fce7f3);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 12px;
+            border-left: 4px solid #ec4899;
+        }
+
+        .place-card h4 {
+            color: #333;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .place-card .rating {
+            color: #ec4899;
+            font-weight: 600;
+        }
+
+        .place-card .reviews-count {
+            color: #888;
+            font-size: 13px;
+        }
+
+        .place-card .comment {
+            color: #555;
+            font-style: italic;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        .place-card .safe-badge {
+            display: inline-block;
+            background: #dcfce7;
+            color: #166534;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-top: 8px;
+        }
+
+        /* Tour Card */
+        .tour-card {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 12px;
+        }
+
+        .tour-card h4 {
+            color: #92400e;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .tour-card .tour-meta {
+            color: #b45309;
+            font-size: 13px;
+            margin: 5px 0;
+        }
+
+        .tour-card .price {
+            color: #d97706;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 20px;
+            background: white;
+            border: 2px solid #ec4899;
+            border-radius: 25px;
+            color: #ec4899;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .tab-btn:hover {
+            background: #fce7f3;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #ec4899, #f472b6);
+            color: white;
+            border-color: transparent;
+        }
+
+        .tab-content {
+            display: block;
+        }
+
+        /* Toilet Card */
+        .toilet-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #06b6d4;
+        }
+
+        .toilet-card h4 {
+            color: #333;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .toilet-card .toilet-type {
+            color: #0891b2;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+
+        .toilet-card .toilet-address {
+            color: #666;
+            font-size: 14px;
+            margin: 8px 0;
+        }
+
+        .toilet-card .toilet-distance {
+            color: #10b981;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .toilet-card .toilet-rating {
+            color: #f59e0b;
+            font-weight: 600;
+            margin: 5px 0;
+        }
+
+        .toilet-card .clean-badge {
+            display: inline-block;
+            background: #d1fae5;
+            color: #065f46;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-top: 8px;
+        }
+
+        .toilet-card .women-only-badge {
+            display: inline-block;
+            background: #fce7f3;
+            color: #be185d;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-top: 8px;
+            margin-left: 8px;
+        }
+
+        /* Emergency Button */
+        .emergency-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+            border: 4px solid white;
+            font-size: 24px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.5);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .emergency-btn:hover {
+            transform: scale(1.1);
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+        }
+
+        /* Emergency Modal */
+        .emergency-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto;
+        }
+
+        .emergency-modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            max-height: 90vh;
+            overflow-y: auto;
+            margin: 20px 0;
+        }
+
+        .emergency-modal h2 {
+            color: #ef4444;
+            margin-bottom: 15px;
+        }
+
+        .emergency-modal p {
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .emergency-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .emergency-actions button {
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .emergency-call-btn {
+            background: #10b981;
+            color: white;
+        }
+
+        .emergency-message-btn {
+            background: #ec4899;
+            color: white;
+        }
+
+        .emergency-alert-btn {
+            background: #f59e0b;
+            color: white;
+        }
+
+        .emergency-police-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .emergency-close-btn {
+            background: #6b7280;
+            color: white;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 600px) {
+            .planner-form .form-row {
+                grid-template-columns: 1fr;
+            }
+            .tab-nav {
+                justify-content: center;
+            }
+            .tab-btn {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Safemate</h1>
+        <div class="header-right">
+            <a href="#" onclick="showAboutUs()" style="color:#ec4899;font-weight:600;margin-right:20px;text-decoration:none;">About Us</a>
+            <button class="logout-btn hidden" id="logoutBtn" onclick="logout()">Logout</button>
+        </div>
+    </header>
+
+    <!-- About Us Page -->
+    <div class="container hidden" id="aboutUs">
+        <div class="card">
+            <h2 style="color:#ec4899;font-size:24px;margin-bottom:20px;text-align:center;">About Safemate</h2>
+            <p style="color:#555;line-height:1.8;margin-bottom:15px;">
+                Safemate is a platform designed to make travel safer, easier, and more comfortable for women. Our mission is to create a trusted environment where women can explore new places with confidence. Through our platform, travelers can connect with verified women drivers, experienced travel guides, safe hotels and PGs, and trusted travel partners.
+            </p>
+            <p style="color:#555;line-height:1.8;margin-bottom:15px;">
+                We believe that every woman deserves the freedom to travel without fear. Safemate focuses on building a supportive community where women can plan trips, share experiences, and help each other travel safely.
+            </p>
+            <p style="color:#555;line-height:1.8;margin-bottom:15px;">
+                One of our unique features is the Nearby Toilets Finder, which helps travelers quickly locate clean and safe restrooms around them. This feature is especially helpful for foreign tourists who may not be familiar with the area or local facilities. By providing easy access to essential services like restrooms, we aim to make travel more comfortable and stress-free.
+            </p>
+            <p style="color:#555;line-height:1.8;margin-bottom:15px;">
+                In addition, our platform includes safety tools such as emergency alerts, verified reviews, and women-only travel groups, ensuring that every journey is safe, enjoyable, and empowering.
+            </p>
+            <p style="color:#555;line-height:1.8;margin-bottom:20px;">
+                At Safemate, we are not just building a travel service — we are building a community that empowers women to travel freely, safely, and confidently anywhere in the world.
+            </p>
+            <button class="submit-btn" onclick="goBack()">Back to Home</button>
+        </div>
+    </div>
+
+    <!-- Home Page - Role Selection -->
+    <div class="container" id="home">
+        <h1 class="page-title">Choose Your Role</h1>
+        
+        <div class="card role-card" onclick="showLogin('traveler')">
+            <div class="role-info">
+                <h3>Traveling Woman</h3>
+                <p>Plan safe trips, book cabs, hotels & guides</p>
+            </div>
+        </div>
+
+        <div class="card role-card" onclick="showLogin('driver')">
+            <div class="role-info">
+                <h3>Women Driver</h3>
+                <p>Accept ride requests and earn money</p>
+            </div>
+        </div>
+
+        <div class="card role-card" onclick="showLogin('guide')">
+            <div class="role-info">
+                <h3>Lady Travel Guide</h3>
+                <p>Manage tours and guide travelers</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Page -->
+    <div class="container hidden" id="loginPage">
+        <div class="login-card">
+            <!-- Back to Home Button -->
+            <button class="back-home-btn" onclick="showHome()" style="background:none;border:none;color:#ec4899;font-weight:600;cursor:pointer;margin-bottom:15px;font-size:14px;display:flex;align-items:center;gap:5px;">
+                ← Back to Home
+            </button>
+            
+            <h2 id="authTitle">Welcome Back</h2>
+            
+            <!-- Login Form -->
+            <div id="loginForm">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="loginEmail" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" placeholder="Enter your password">
+                </div>
+                <button class="submit-btn" onclick="login()">Login</button>
+                <p class="switch-link">
+                    New here? <a href="#" onclick="showSignup()">Create Account</a>
+                </p>
+            </div>
+
+            <!-- Signup Form -->
+            <div id="signupForm" class="hidden">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="signupName" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="signupEmail" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="tel" id="signupPhone" placeholder="10-digit number">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="signupPassword" placeholder="Create password">
+                </div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" id="signupConfirmPassword" placeholder="Confirm password">
+                </div>
+                <div class="form-group">
+                    <label>Role</label>
+                    <select id="signupRole" onchange="showVerificationField()">
+                        <option value="traveler">Traveling Woman</option>
+                        <option value="driver">Women Driver</option>
+                        <option value="guide">Lady Travel Guide</option>
+                    </select>
+                </div>
+                
+                <!-- Traveler Verification - Aadhar or Passport -->
+                <div id="travelerVerification" class="form-group hidden">
+                    <label>ID Verification</label>
+                    <select id="travelerIdType" style="margin-bottom:10px;">
+                        <option value="aadhar">Aadhar Card</option>
+                        <option value="passport">Passport</option>
+                    </select>
+                    <input type="text" id="signupTravelerId" placeholder="Enter your ID number">
+                    <small style="color:#666;font-size:12px;">For verification purposes</small>
+                </div>
+                
+                <!-- Emergency Contact -->
+                <div id="emergencyContact" class="form-group">
+                    <label>Emergency Contact</label>
+                    <input type="tel" id="signupEmergencyContact" placeholder="Emergency contact number">
+                    <small style="color:#666;font-size:12px;">For emergency situations</small>
+                </div>
+                
+                <!-- Driver Verification - Driving License -->
+                <div id="driverVerification" class="form-group hidden">
+                    <label>Driving License Number</label>
+                    <input type="text" id="signupDrivingLicense" placeholder="Enter your driving license number">
+                    <small style="color:#666;font-size:12px;">For verification purposes</small>
+                </div>
+                
+                <!-- Guide Verification - Aadhar Card and Age -->
+                <div id="guideVerification" class="form-group hidden">
+                    <label>Aadhar Card Number</label>
+                    <input type="text" id="signupAadhar" placeholder="Enter your Aadhar card number">
+                    <small style="color:#666;font-size:12px;">For verification purposes</small>
+                    <div style="margin-top:15px;">
+                        <label>Age</label>
+                        <input type="number" id="signupAge" placeholder="Enter your age" min="18" max="100">
+                        <small style="color:#666;font-size:12px;">Must be 18 years or older</small>
+                    </div>
+                </div>
+                
+                <button class="submit-btn" onclick="signup()">Create Account</button>
+                <p class="switch-link">
+                    Have account? <a href="#" onclick="showLoginForm()">Login</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Traveler Dashboard -->
+    <div class="dashboard hidden" id="travelerDashboard">
+        <h2>Traveler Dashboard</h2>
+        
+        <!-- Tab Navigation -->
+        <div class="tab-nav">
+            <button class="tab-btn active" onclick="showTravelerTab('planTrip')">Plan Your Trip</button>
+            <button class="tab-btn" onclick="showTravelerTab('bookCab')">Book a Cab</button>
+            <button class="tab-btn" onclick="showTravelerTab('bookHotel')">Hotels & PG</button>
+            <button class="tab-btn" onclick="showTravelerTab('travelPartner')">Travel Partner</button>
+            <button class="tab-btn" onclick="showTravelerTab('travelGuide')">Travel Guide</button>
+            <button class="tab-btn" onclick="showTravelerTab('nearbyToilets')">Nearby Toilets</button>
+            <button class="tab-btn" onclick="showTravelerTab('myBookings')">📅 My Bookings</button>
+            <button class="tab-btn" onclick="showTravelerTab('emergencyContact')">🛡️ Emergency Contact</button>
+        </div>
+        
+        <!-- Tab: Plan Your Trip -->
+        <div id="tab-planTrip" class="tab-content">
+            <div class="dashboard-section">
+                <h3>Plan Your Trip</h3>
+                <div class="planner-form">
+                    <div class="form-row">
+                        <select id="tripDestination">
+                            <option>Pondicherry</option>
+                            <option>Coorg</option>
+                            <option>Jaipur</option>
+                        </select>
+                        <select id="tripInterest">
+                            <option>Nature</option>
+                            <option>Adventure</option>
+                            <option>Cafes</option>
+                            <option>Shopping</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div>
+                            <label style="display:block;color:#555;font-weight:500;margin-bottom:8px;">From Date</label>
+                            <input type="date" id="tripFromDate" style="padding:12px;border:2px solid #e5e7eb;border-radius:10px;width:100%">
+                        </div>
+                        <div>
+                            <label style="display:block;color:#555;font-weight:500;margin-bottom:8px;">To Date</label>
+                            <input type="date" id="tripToDate" style="padding:12px;border:2px solid #e5e7eb;border-radius:10px;width:100%">
+                        </div>
+                    </div>
+                    <button class="submit-btn" onclick="createTrip()">Get Recommendations</button>
+                    <div id="recommendations" class="hidden" style="margin-top:20px"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tab: Book a Cab -->
+        <div id="tab-bookCab" class="tab-content hidden">
+            <div class="dashboard-section">
+                <h3>Book a Cab</h3>
+                <p style="color:#666;margin-bottom:15px;">Select a driver to request a ride. Drivers will receive your request and can accept or decline.</p>
+                <div class="service-grid" id="availableDrivers">
+                    <div class="service-card">
+                        <h4>Priya Singh</h4>
+                        <p class="service-type">Sedan • Bangalore</p>
+                        <p>⭐ 4.8 • 125 rides</p>
+                        <button class="booking-btn" onclick="viewDriverDetails('Priya Singh', 'Sedan', 'Bangalore', '4.8', '125', 'KA 01 AB 1234', 'Toyota Innova', '9876543210')">View Details</button>
+                    </div>
+                    <div class="service-card">
+                        <h4>Sneha Reddy</h4>
+                        <p class="service-type">SUV • Chennai</p>
+                        <p>⭐ 4.9 • 89 rides</p>
+                        <button class="booking-btn" onclick="viewDriverDetails('Sneha Reddy', 'SUV', 'Chennai', '4.9', '89', 'TN 02 CD 5678', 'Mahindra XUV500', '9876543211')">View Details</button>
+                    </div>
+                    <div class="service-card">
+                        <h4>Anita Menon</h4>
+                        <p class="service-type">Sedan • Jaipur</p>
+                        <p>⭐ 4.7 • 98 rides</p>
+                        <button class="booking-btn" onclick="viewDriverDetails('Anita Menon', 'Sedan', 'Jaipur', '4.7', '98', 'RJ 03 EF 9012', 'Honda City', '9876543212')">View Details</button>
+                    </div>
+                    <div class="service-card">
+                        <h4>Kavitha R</h4>
+                        <p class="service-type">SUV • Pondicherry</p>
+                        <p>⭐ 4.9 • 156 rides</p>
+                        <button class="booking-btn" onclick="viewDriverDetails('Kavitha R', 'SUV', 'Pondicherry', '4.9', '156', 'PY 04 GH 3456', 'Toyota Fortuner', '9876543213')">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Driver Details Modal -->
+        <div id="driverDetailsModal" class="emergency-modal">
+            <div class="emergency-modal-content">
+                <h2 id="driverDetailName" style="color:#ec4899;margin-bottom:10px;">Driver Details</h2>
+                <div id="driverDetailContent" style="text-align:left;margin-bottom:20px;">
+                    <p style="margin:8px 0;"><strong>Vehicle Type:</strong> <span id="driverDetailVehicleType"></span></p>
+                    <p style="margin:8px 0;"><strong>Vehicle:</strong> <span id="driverDetailVehicle"></span></p>
+                    <p style="margin:8px 0;"><strong>Vehicle Number:</strong> <span id="driverDetailVehicleNumber"></span></p>
+                    <p style="margin:8px 0;"><strong>City:</strong> <span id="driverDetailCity"></span></p>
+                    <p style="margin:8px 0;"><strong>Rating:</strong> <span id="driverDetailRating"></span></p>
+                    <p style="margin:8px 0;"><strong>Total Rides:</strong> <span id="driverDetailRides"></span></p>
+                    <p style="margin:8px 0;"><strong>Phone:</strong> <span id="driverDetailPhone"></span></p>
+                </div>
+                <button class="submit-btn" onclick="requestRideFromDetails()">Request Ride</button>
+                <button class="emergency-close-btn" style="margin-top:10px;" onclick="closeDriverDetails()">Close</button>
+            </div>
+        </div>
+        
+        <!-- Tab: Hotels & PG -->
+        <div id="tab-bookHotel" class="tab-content hidden">
+            <div class="dashboard-section">
+                <h3>Hotels & PG</h3>
+                <div class="service-grid">
+                    <div class="service-card">
+                        <h4>SafeStay Hotel</h4>
+                        <p class="service-type">Women Friendly</p>
+                        <p>📍 Pondicherry</p>
+                        <p>⭐ 4.8 • 89 reviews</p>
+                        <button class="booking-btn">Book Now</button>
+                    </div>
+                    <div class="service-card">
+                        <h4>Comfort PG</h4>
+                        <p class="service-type">Women Only</p>
+                        <p>📍 Jaipur</p>
+                        <p>⭐ 4.7 • 56 reviews</p>
+                        <button class="booking-btn">Book Now</button>
+                    </div>
+                    <div class="service-card">
+                        <h4>Her Heaven Stay</h4>
+                        <p class="service-type">Women Only</p>
+                        <p>📍 Coorg</p>
+                        <p>⭐ 4.9 • 78 reviews</p>
+                        <button class="booking-btn">Book Now</button>
+                    </div>
+                    <div class="service-card">
+                        <h4>Ladies Lodge</h4>
+                        <p class="service-type">Women Friendly</p>
+                        <p>📍 Bangalore</p>
+                        <p>⭐ 4.6 • 45 reviews</p>
+                        <button class="booking-btn">Book Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tab: Travel Partner -->
+        <div id="tab-travelPartner" class="tab-content hidden">
+            <div class="dashboard-section">
+                <h3>Find Travel Partner</h3>
+                <div class="service-grid">
+                    <div class="service-card">
+                        <h4>Coorg Trip - 15 July</h4>
+                        <p class="service-type">Nature Trek</p>
+                        <p>👤 2 women going</p>
+                        <p>📍 Starting from Bangalore</p>
+                        <button class="booking-btn">Join Trip</button>
+                    </div>
+                    <div class="service-card">
+                        <h4>Goa Beach Tour</h4>
+                        <p class="service-type">Beach Vacation</p>
+                        <p>👤 5 women joined</p>
+                        <p>📍 Starting from Mumbai</p>
+                        <button class="booking-btn">Join Group</button>
+                    </div>
+                    <div class="service-card">
+                        <h4>Jaipur Weekend Getaway</h4>
+                        <p class="service-type">Heritage Tour</p>
+                        <p>👤 3 women going</p>
+                        <p>📍 Starting from Delhi</p>
+                        <button class="booking-btn">Join Trip</button>
+                    </div>
+                    <div class="service-card">
+                        <h4>Pondicherry Solo Trip</h4>
+                        <p class="service-type">Relaxation</p>
+                        <p>👤 1 woman looking</p>
+                        <p>📍 Starting from Chennai</p>
+                        <button class="booking-btn">Join Trip</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tab: Travel Guide -->
+        <div id="tab-travelGuide" class="tab-content hidden">
+            <div class="dashboard-section">
+                <h3>Travel Guides</h3>
+                <div class="service-grid">
+                    <div class="service-card">
+                        <h4>Anjali Sharma</h4>
+                        <p class="service-type">Jaipur Heritage Tours</p>
+                        <p>⭐ 4.9 • 67 reviews</p>
+                        <p style="color:#10b981;font-size:13px;margin-top:5px;">✓ Available</p>
+                        <button class="booking-btn" onclick="viewGuideDetails('Anjali Sharma', 'Jaipur Heritage Tours', '4.9', '35', '9876543210', 'Available', 'Full day - Hawa Mahal, City Palace, Amber Fort', '₹2,500')">View Details</button>
+                    </div>
+                    <div class="service-card">
+                        <h4>Meera Nair</h4>
+                        <p class="service-type">Coorg Nature Guide</p>
+                        <p>⭐ 4.8 • 45 reviews</p>
+                        <p style="color:#10b981;font-size:13px;margin-top:5px;">✓ Available</p>
+                        <button class="booking-btn" onclick="viewGuideDetails('Meera Nair', 'Coorg Nature Guide', '4.8', '28', '9876543211', 'Available', '2-day trek and coffee plantation', '₹4,000')">View Details</button>
+                    </div>
+                    <div class="service-card">
+                        <h4>Priya Venkatesh</h4>
+                        <p class="service-type">Pondicherry Beach Tours</p>
+                        <p>⭐ 4.9 • 89 reviews</p>
+                        <p style="color:#10b981;font-size:13px;margin-top:5px;">✓ Available</p>
+                        <button class="booking-btn" onclick="viewGuideDetails('Priya Venkatesh', 'Pondicherry Beach Tours', '4.9', '32', '9876543212', 'Available', 'Beach tour and city exploration', '₹3,000')">View Details</button>
+                    </div>
+                    <div class="service-card">
+                        <h4>Sonia Gupta</h4>
+                        <p class="service-type">Delhi Heritage Tours</p>
+                        <p>⭐ 4.7 • 52 reviews</p>
+                        <p style="color:#ef4444;font-size:13px;margin-top:5px;">✗ Unavailable</p>
+                        <button class="booking-btn" onclick="viewGuideDetails('Sonia Gupta', 'Delhi Heritage Tours', '4.7', '40', '9876543213', 'Unavailable', 'Red Fort, Qutub Minar, India Gate', '₹2,800')">View Details</button>
+                    </div>
+                <div class="service-card">
+                        <h4>Kavitha Reddy</h4>
+                        <p class="service-type">Hyderabad City Tours</p>
+                        <p>⭐ 4.8 • 63 reviews</p>
+                        <p style="color:#10b981;font-size:13px;margin-top:5px;">✓ Available</p>
+                        <button class="booking-btn" onclick="viewGuideDetails('Kavitha Reddy', 'Hyderabad City Tours', '4.8', '30', '9876543214', 'Available', 'Charminar, Golconda Fort, Hussain Sagar', '₹2,500')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Guide Details Modal -->
+            <div id="guideDetailsModal" class="emergency-modal">
+                <div class="emergency-modal-content">
+                    <h2 id="guideDetailName" style="color:#ec4899;margin-bottom:10px;">Guide Details</h2>
+                    <div id="guideDetailContent" style="text-align:left;margin-bottom:20px;">
+                        <p style="margin:8px 0;"><strong>Tour Type:</strong> <span id="guideDetailTour"></span></p>
+                        <p style="margin:8px 0;"><strong>Rating:</strong> <span id="guideDetailRating"></span></p>
+                        <p style="margin:8px 0;"><strong>Age:</strong> <span id="guideDetailAge"></span> years</p>
+                        <p style="margin:8px 0;"><strong>Phone:</strong> <span id="guideDetailPhone"></span></p>
+                        <p style="margin:8px 0;"><strong>Availability:</strong> <span id="guideDetailAvailability"></span></p>
+                        <p style="margin:8px 0;"><strong>Tour Description:</strong> <span id="guideDetailDesc"></span></p>
+                        <p style="margin:8px 0;"><strong>Price per day:</strong> <span id="guideDetailPrice" style="color:#ec4899;font-weight:600;"></span></p>
+                    </div>
+                    <div id="bookingSection" style="border-top:2px solid #e5e7eb;padding-top:15px;">
+                        <h4 style="color:#333;margin-bottom:15px;">Book This Guide</h4>
+                        <div class="form-group">
+                            <label>Number of Days</label>
+                            <select id="bookingDays" onchange="updateBookingTotal()">
+                                <option value="1">1 Day</option>
+                                <option value="2">2 Days</option>
+                                <option value="3">3 Days</option>
+                                <option value="4">4 Days</option>
+                                <option value="5">5 Days</option>
+                                <option value="6">6 Days</option>
+                                <option value="7">7 Days</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Select Date</label>
+                            <input type="date" id="bookingDate" style="width:100%;padding:12px;border:2px solid #e5e7eb;border-radius:10px;">
+                        </div>
+                        <div class="form-group">
+                            <label>Total Price</label>
+                            <p id="bookingTotal" style="font-size:20px;font-weight:700;color:#ec4899;margin:10px 0;">₹0</p>
+                        </div>
+                        <button class="submit-btn" onclick="bookGuide()">Book Now</button>
+                    </div>
+                    <button class="emergency-close-btn" style="margin-top:10px;" onclick="closeGuideDetails()">Close</button>
+                </div>
+            </div>
+            
+            <!-- Reviews -->
+            <div class="dashboard-section">
+                <h3>⭐ Reviews</h3>
+                <div id="reviewsList"></div>
+            </div>
+        </div>
+        
+        <!-- Tab: Nearby Toilets -->
+        <div id="tab-nearbyToilets" class="tab-content hidden">
+            <div class="dashboard-section">
+                <h3>Find Nearby Toilets</h3>
+                <div class="planner-form">
+                    <div class="form-row">
+                        <select id="toiletLocation">
+                            <option>Pondicherry</option>
+                            <option>Coorg</option>
+                            <option>Jaipur</option>
+                            <option>Bangalore</option>
+                            <option>Chennai</option>
+                        </select>
+                        <select id="toiletType">
+                            <option>All Types</option>
+                            <option>Public Toilet</option>
+                            <option>Private/Paid</option>
+                            <option>Hotel/Restaurant</option>
+                            <option>Railway Station</option>
+                            <option>Bus Stand</option>
+                        </select>
+                    </div>
+                    <button class="submit-btn" style="margin-bottom:10px;" onclick="useCurrentLocation()">Use My Current Location</button>
+                    <button class="submit-btn" onclick="findNearbyToilets()">Find Toilets</button>
+                    <div id="toiletResults" class="hidden" style="margin-top:20px"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tab: My Bookings -->
+        <div id="tab-myBookings" class="tab-content hidden">
+            <div class="dashboard-section">
+                <h3>📅 My Bookings</h3>
+                <div id="travelerMyBookings">
+                    <div class="dashboard-card completed-card" onclick="viewBookingDetails('Jaipur Heritage Tour', 'Hawa Mahal, City Palace, Amber Fort', '15 March 2026', '1 Day', '₹2,500', 'Anjali Sharma', 'Jaipur')" style="cursor:pointer;">
+                        <h4>Jaipur Heritage Tour</h4>
+                        <p class="route">📍 Hawa Mahal, City Palace, Amber Fort</p>
+                        <p class="meta">🕐 15 March 2026 • 1 Day</p>
+                        <p class="price">💰 ₹2,500 - Confirmed</p>
+                        <p style="color:#10b981;font-size:13px;margin-top:8px;">✓ Guide: Anjali Sharma</p>
+                    </div>
+                    <div class="dashboard-card completed-card" onclick="viewBookingDetails('Pondicherry Beach Tour', 'Paradise Beach, Promenade', '20 March 2026', '2 Days', '₹6,000', 'Priya Venkatesh', 'Pondicherry')" style="cursor:pointer;">
+                        <h4>Pondicherry Beach Tour</h4>
+                        <p class="route">📍 Paradise Beach, Promenade</p>
+                        <p class="meta">🕐 20 March 2026 • 2 Days</p>
+                        <p class="price">💰 ₹6,000 - Confirmed</p>
+                        <p style="color:#10b981;font-size:13px;margin-top:8px;">✓ Guide: Priya Venkatesh</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Booking Details Modal -->
+        <div id="bookingDetailsModal" class="emergency-modal">
+            <div class="emergency-modal-content">
+                <h2 id="bookingDetailTitle" style="color:#ec4899;margin-bottom:10px;">Booking Details</h2>
+                <div id="bookingDetailContent" style="text-align:left;margin-bottom:20px;">
+                    <p style="margin:8px 0;"><strong>Tour:</strong> <span id="bookingDetailTour"></span></p>
+                    <p style="margin:8px 0;"><strong>Locations:</strong> <span id="bookingDetailLocations"></span></p>
+                    <p style="margin:8px 0;"><strong>Date:</strong> <span id="bookingDetailDate"></span></p>
+                    <p style="margin:8px 0;"><strong>Duration:</strong> <span id="bookingDetailDuration"></span></p>
+                    <p style="margin:8px 0;"><strong>Price:</strong> <span id="bookingDetailPrice" style="color:#ec4899;font-weight:600;"></span></p>
+                    <p style="margin:8px 0;"><strong>Guide:</strong> <span id="bookingDetailGuide"></span></p>
+                    <p style="margin:8px 0;"><strong>Status:</strong> <span style="color:#10b981;font-weight:600;">Confirmed</span></p>
+                </div>
+                
+                <!-- Write Review Section -->
+                <div style="border-top:2px solid #e5e7eb;padding-top:15px;margin-top:15px;">
+                    <h4 style="color:#333;margin-bottom:15px;">⭐ Write a Review</h4>
+                    <div class="form-group">
+                        <label>Rating</label>
+                        <select id="bookingReviewRating">
+                            <option value="⭐⭐⭐⭐⭐ Excellent">⭐⭐⭐⭐⭐ Excellent</option>
+                            <option value="⭐⭐⭐⭐ Very Good">⭐⭐⭐⭐ Very Good</option>
+                            <option value="⭐⭐⭐ Good">⭐⭐⭐ Good</option>
+                            <option value="⭐⭐ Fair">⭐⭐ Fair</option>
+                            <option value="⭐ Poor">⭐ Poor</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Your Review</label>
+                        <textarea id="bookingReviewText" placeholder="Share your experience..." style="width:100%;padding:12px;border:2px solid #e5e7eb;border-radius:10px;resize:vertical;min-height:80px;"></textarea>
+                    </div>
+                    <button class="submit-btn" onclick="submitBookingReview()">Submit Review</button>
+                </div>
+                
+                <button class="emergency-close-btn" style="margin-top:15px;" onclick="closeBookingDetails()">Close</button>
+            </div>
+        </div>
+        
+        <!-- Tab: Emergency Contact -->
+        <div id="tab-emergencyContact" class="tab-content hidden">
+            <div class="dashboard-section">
+                <h3>🛡️ Emergency Contact</h3>
+                <div class="planner-form">
+                    <p style="color:#555;margin-bottom:20px;">Add your dear one's contact number who will be notified in case of emergency.</p>
+                    <div class="form-group">
+                        <label>Contact Name</label>
+                        <input type="text" id="emergencyContactName" placeholder="Enter contact name">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" id="emergencyContactPhone" placeholder="Enter phone number">
+                    </div>
+                    <div class="form-group">
+                        <label>Relationship</label>
+                        <select id="emergencyContactRelation">
+                            <option>Parent</option>
+                            <option>Spouse</option>
+                            <option>Sibling</option>
+                            <option>Friend</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <button class="submit-btn" onclick="saveEmergencyContact()">Save Contact</button>
+                    <div id="savedContacts" style="margin-top:20px"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Emergency Button -->
+        <button class="emergency-btn" onclick="showEmergencyModal()">SOS</button>
+        
+        <!-- Emergency Modal -->
+        <div id="emergencyModal" class="emergency-modal">
+            <div class="emergency-modal-content">
+                <h2>🚨 Emergency</h2>
+                <p>Choose an action:</p>
+                <div class="emergency-actions">
+                    <button class="emergency-call-btn" onclick="callEmergency()">Call Emergency Contact</button>
+                    <button class="emergency-message-btn" onclick="sendEmergencyMessage()">Send Message to Emergency Contact</button>
+                    <button class="emergency-alert-btn" onclick="alertNearbyDrivers()">Alert Nearby Drivers</button>
+                    <button class="emergency-police-btn" onclick="callPolice()">Call Police (100)</button>
+                    <button class="emergency-close-btn" onclick="closeEmergencyModal()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Driver Dashboard -->
+    <div class="dashboard hidden" id="driverDashboard">
+        <h2>Driver Dashboard</h2>
+        
+        <!-- Driver Tab Navigation -->
+        <div class="tab-nav">
+            <button class="tab-btn active" onclick="showDriverTab('driverHome')">🏠 Home</button>
+            <button class="tab-btn" onclick="showDriverTab('driverProfile')">🚗 My Vehicle</button>
+        </div>
+
+        <!-- Driver Home Tab -->
+        <div id="driverTab-driverHome" class="tab-content">
+            <!-- Stats -->
+            <div class="dashboard-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h4>Your Rating</h4>
+                        <div class="value" id="driverRating">⭐ 0.0</div>
+                        <p id="driverTotalRides">0 rides</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Today's Earnings</h4>
+                        <div class="value" id="driverTodayEarnings">₹0</div>
+                        <p id="driverTodayRides">0 rides today</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Total Earnings</h4>
+                        <div class="value" id="driverTotalEarnings">₹0</div>
+                        <p id="driverAllTimeRides">All time</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Availability -->
+            <div class="dashboard-section">
+                <h3>📱 Availability</h3>
+                <div class="dashboard-card">
+                    <div class="availability-toggle">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="driverAvailability" checked onchange="toggleAvailability()">
+                            <span class="toggle-slider"></span>
+                        </label>
+                        <span class="availability-status" id="availabilityText">You are ONLINE</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Driver My Vehicle Tab -->
+        <div id="driverTab-driverProfile" class="tab-content hidden">
+            <div class="dashboard-section">
+                <h3>🚗 My Vehicle Details</h3>
+                <div class="planner-form">
+                    <div class="form-group">
+                        <label>Vehicle Type</label>
+                        <select id="driverVehicleType">
+                            <option>Car</option>
+                            <option>Bike</option>
+                            <option>Scooter</option>
+                            <option>Auto</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Vehicle Brand & Model</label>
+                        <input type="text" id="driverVehicleBrand" placeholder="e.g., Honda Activa, Royal Enfield">
+                    </div>
+                    <div class="form-group">
+                        <label>Vehicle Number</label>
+                        <input type="text" id="driverVehicleNumber" placeholder="e.g., TN 01 AB 1234">
+                    </div>
+                    <div class="form-group">
+                        <label>City / Operating Area</label>
+                        <select id="driverCity">
+                            <option>Bangalore</option>
+                            <option>Chennai</option>
+                            <option>Jaipur</option>
+                            <option>Pondicherry</option>
+                            <option>Coorg</option>
+                            <option>Delhi</option>
+                            <option>Mumbai</option>
+                            <option>Hyderabad</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Price per Ride (₹)</label>
+                        <input type="number" id="driverPrice" placeholder="e.g., 150">
+                    </div>
+                    <button class="submit-btn" onclick="saveDriverProfile()">Save Vehicle Details</button>
+                    <div id="driverProfileSaved" style="margin-top:20px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ride Requests -->
+        <div class="dashboard-section">
+            <h3>📲 Ride Requests</h3>
+            <div id="rideRequests">
+                <div class="dashboard-card request-card">
+                    <h4>Priya S. - Sedan</h4>
+                    <p class="route">📍 Koramangala → Indiranagar</p>
+                    <p class="meta">🕐 Today, 2:30 PM</p>
+                    <p class="price">💰 ₹180</p>
+                    <div class="action-buttons">
+                        <button class="accept-btn" onclick="acceptRide(this)">Accept</button>
+                        <button class="decline-btn" onclick="declineRide(this)">Decline</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- My Rides -->
+        <div class="dashboard-section">
+            <h3>🚙 My Rides</h3>
+            <div id="myRides">
+                <div class="dashboard-card completed-card">
+                    <h4>Completed Ride</h4>
+                    <p class="route">🕐 10:00 AM - Whitefield to Marathahalli</p>
+                    <p class="price">💰 ₹220 - Paid</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Guide Dashboard -->
+    <div class="dashboard hidden" id="guideDashboard">
+        <h2>Guide Dashboard</h2>
+        
+        <!-- Guide Tab Navigation -->
+        <div class="tab-nav">
+            <button class="tab-btn active" onclick="showGuideTab('guideHome')">🏠 Home</button>
+            <button class="tab-btn" onclick="showGuideTab('guideProfile')">🎯 My Services</button>
+            <button class="tab-btn" onclick="showGuideTab('bookingRequests')">📋 Bookings</button>
+            <button class="tab-btn" onclick="showGuideTab('myBookings')">📅 My Bookings</button>
+            <button class="tab-btn" onclick="showGuideTab('myTours')">🏆 My Tours</button>
+            <button class="tab-btn" onclick="showGuideTab('reviews')">💬 Reviews</button>
+        </div>
+
+        <!-- Guide Home Tab -->
+        <div id="guideTab-guideHome" class="tab-content">
+            <!-- Stats -->
+            <div class="dashboard-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h4>Your Rating</h4>
+                        <div class="value">⭐ 4.9</div>
+                        <p>89 tours</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Today's Earnings</h4>
+                        <div class="value">₹3,500</div>
+                        <p>4 tours</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Monthly</h4>
+                        <div class="value">₹1,25,000</div>
+                        <p>Great work!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Availability -->
+            <div class="dashboard-section">
+                <h3>📱 Availability</h3>
+                <div class="dashboard-card">
+                    <div class="availability-toggle">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="guideAvailability" checked onchange="toggleGuideAvailability()">
+                            <span class="toggle-slider"></span>
+                        </label>
+                        <span class="availability-status" id="guideAvailabilityText">You are AVAILABLE</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Guide My Services Tab -->
+        <div id="guideTab-guideProfile" class="tab-content hidden">
+            <div class="dashboard-section">
+                <h3>🎯 My Services</h3>
+                <div class="planner-form">
+                    <div class="form-group">
+                        <label>Service Name</label>
+                        <input type="text" id="guideServiceName" placeholder="e.g., Jaipur Heritage Tour">
+                    </div>
+                    <div class="form-group">
+                        <label>Location / City</label>
+                        <select id="guideServiceCity">
+                            <option>Jaipur</option>
+                            <option>Coorg</option>
+                            <option>Pondicherry</option>
+                            <option>Delhi</option>
+                            <option>Bangalore</option>
+                            <option>Chennai</option>
+                            <option>Hyderabad</option>
+                            <option>Mumbai</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Service Type</label>
+                        <select id="guideServiceType">
+                            <option>Heritage Tour</option>
+                            <option>Nature Trek</option>
+                            <option>Beach Tour</option>
+                            <option>City Exploration</option>
+                            <option>Adventure</option>
+                            <option>Culinary Tour</option>
+                            <option>Shopping Tour</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="guideServiceDesc" placeholder="Describe your tour service..." style="width:100%;padding:12px;border:2px solid #e5e7eb;border-radius:10px;resize:vertical;min-height:80px;"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Price per Person (₹)</label>
+                        <input type="number" id="guideServicePrice" placeholder="e.g., 2500">
+                    </div>
+                    <button class="submit-btn" onclick="saveGuideServices()">Add Service</button>
+                    <div id="guideServicesSaved" style="margin-top:20px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Booking Requests -->
+        <div id="guideTab-bookingRequests" class="tab-content hidden">
+            <div class="dashboard-section">
+                <h3>📋 Booking Requests</h3>
+                <div id="bookingRequests">
+                    <div class="dashboard-card request-card">
+                        <h4>Jaipur Heritage Tour</h4>
+                        <p class="route">📍 Hawa Mahal, 9:00 AM</p>
+                        <p class="meta">👤 Sarah • 🕐 Tomorrow</p>
+                        <p class="price">💰 ₹2,500</p>
+                        <div class="action-buttons">
+                            <button class="accept-btn" onclick="acceptBooking(this)">Accept</button>
+                            <button class="decline-btn" onclick="declineBooking(this)">Decline</button>
+                        </div>
+                    </div>
+                    <div class="dashboard-card request-card">
+                        <h4>Coorg Nature Trek</h4>
+                        <p class="route">📍 Hotel, 6:00 AM</p>
+                        <p class="meta">👤 Priya • 🕐 20 March</p>
+                        <p class="price">💰 ₹4,000</p>
+                        <div class="action-buttons">
+                            <button class="accept-btn" onclick="acceptBooking(this)">Accept</button>
+                            <button class="decline-btn" onclick="declineBooking(this)">Decline</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- My Bookings -->
+        <div id="guideTab-myBookings" class="tab-content hidden">
+            <div class="dashboard-section">
+                <h3>📅 My Bookings</h3>
+                <div id="myBookings">
+                    <div class="dashboard-card completed-card">
+                        <h4>Amber Fort Tour</h4>
+                        <p class="route">🕐 9:00 AM - 2:00 PM</p>
+                        <p class="meta">👤 3 travelers</p>
+                        <p class="price">💰 ₹7,500 - Paid</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- My Tours -->
+        <div id="guideTab-myTours" class="tab-content hidden">
+            <div class="dashboard-section">
+                <h3>🏆 My Tours</h3>
+                <div class="tour-card">
+                    <h4>Jaipur Heritage Tour</h4>
+                    <p class="tour-meta">⭐ 4.9 • 67 reviews</p>
+                    <p>Full day - Hawa Mahal, City Palace, Amber Fort</p>
+                    <p class="price">₹2,500/person</p>
+                </div>
+                <div class="tour-card">
+                    <h4>Coorg Nature Adventure</h4>
+                    <p class="tour-meta">⭐ 4.8 • 45 reviews</p>
+                    <p>2-day trek and coffee plantation</p>
+                    <p class="price">₹4,000/person</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reviews -->
+        <div id="guideTab-reviews" class="tab-content hidden">
+            <div class="dashboard-section">
+                <h3>💬 Reviews</h3>
+                <div id="guideReviews">
+                    <div class="review-card">
+                        <h4>⭐⭐⭐⭐⭐</h4>
+                        <p>"Anjali was amazing! Very knowledgeable."</p>
+                        <small>- Sarah, Mumbai</small>
+                    </div>
+                    <div class="review-card">
+                        <h4>⭐⭐⭐⭐⭐</h4>
+                        <p>"Best tour experience ever!"</p>
+                        <small>- Priya, Bangalore</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // ─── API CONFIG ───────────────────────────────────────────
+        var API = 'http://localhost:3001/api';
+
+        // Helper: make API calls
+        async function apiCall(method, url, body) {
+            var options = {
+                method: method,
+                headers: { 'Content-Type': 'application/json' }
+            };
+            var token = localStorage.getItem('token');
+            if (token) options.headers['Authorization'] = token;
+            if (body) options.body = JSON.stringify(body);
+
+            var res = await fetch(API + url, options);
+            var data = await res.json();
+            if (!res.ok) throw new Error(data.error || 'Something went wrong');
+            return data;
+        }
+
+        // Get current logged-in user from localStorage token
+        function getCurrentUser() {
+            var user = localStorage.getItem('currentUser');
+            return user ? JSON.parse(user) : null;
+        }
+
+        function initializeApp() {
+            // Nothing needed — backend handles data
+        }
+        
+        // Global variables for driver details modal
+        var selectedDriverName = "";
+        var selectedDriverVehicleType = "";
+        var selectedDriverCity = "";
+        var selectedDriverRating = "";
+        var selectedDriverRides = "";
+        var selectedDriverVehicleNumber = "";
+        var selectedDriverVehicle = "";
+        var selectedDriverPhone = "";
+        
+        // View Driver Details - shows modal with full driver info
+        function viewDriverDetails(name, vehicleType, city, rating, rides, vehicleNumber, vehicle, phone) {
+            selectedDriverName = name;
+            selectedDriverVehicleType = vehicleType;
+            selectedDriverCity = city;
+            selectedDriverRating = rating;
+            selectedDriverRides = rides;
+            selectedDriverVehicleNumber = vehicleNumber;
+            selectedDriverVehicle = vehicle;
+            selectedDriverPhone = phone;
+            
+            // Set driver details in modal
+            document.getElementById('driverDetailName').textContent = name;
+            document.getElementById('driverDetailVehicleType').textContent = vehicleType;
+            document.getElementById('driverDetailVehicle').textContent = vehicle;
+            document.getElementById('driverDetailVehicleNumber').textContent = vehicleNumber;
+            document.getElementById('driverDetailCity').textContent = city;
+            document.getElementById('driverDetailRating').textContent = "⭐ " + rating;
+            document.getElementById('driverDetailRides').textContent = rides + " rides";
+            document.getElementById('driverDetailPhone').textContent = phone;
+            
+            // Show modal
+            var modal = document.getElementById('driverDetailsModal');
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Close Driver Details Modal
+        function closeDriverDetails() {
+            var modal = document.getElementById('driverDetailsModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Request Ride from Details Modal
+        async function requestRideFromDetails() {
+            var user = getCurrentUser();
+            if (!user) { alert('Please login first!'); closeDriverDetails(); return; }
+
+            try {
+                await apiCall('POST', '/rides', {
+                    driver_name: selectedDriverName,
+                    vehicle_type: selectedDriverVehicleType,
+                    vehicle: selectedDriverVehicle,
+                    vehicle_number: selectedDriverVehicleNumber,
+                    city: selectedDriverCity,
+                    pickup: 'My Location',
+                    drop_location: 'Destination',
+                    price: Math.floor(Math.random() * 200) + 100
+                });
+                alert('Ride request sent to ' + selectedDriverName + '!\n\nThe driver will receive your request and can accept or decline.');
+                closeDriverDetails();
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+        
+        // Request a ride - called from Book a Cab
+        function requestRide(driverName, vehicleType, city, rating, rides) {
+            var user = JSON.parse(localStorage.currentUser);
+            if (!user) {
+                alert("Please login first!");
+                return;
+            }
+            
+            // Get user's saved vehicle preference or use default
+            var pickupLocation = "Koramangala";
+            var dropLocation = "Indiranagar";
+            
+            // Create ride request
+            var rideRequests = JSON.parse(localStorage.rideRequests || "[]");
+            var newRequest = {
+                id: Date.now(),
+                travelerName: user.name,
+                travelerEmail: user.email,
+                travelerPhone: user.phone,
+                driverName: driverName,
+                vehicleType: vehicleType,
+                city: city,
+                pickup: pickupLocation,
+                drop: dropLocation,
+                price: Math.floor(Math.random() * 200) + 100,
+                status: "pending",
+                date: new Date().toISOString().split('T')[0],
+                time: new Date().toLocaleTimeString('en-IN', {hour: '2-digit', minute:'2-digit'})
+            };
+            
+            rideRequests.push(newRequest);
+            localStorage.rideRequests = JSON.stringify(rideRequests);
+            
+            alert("Ride request sent! Drivers will see your request.");
+        }
+        
+        // Load available drivers for booking
+        async function loadAvailableDrivers() {
+            var container = document.getElementById('availableDrivers');
+            if (!container) return;
+            container.innerHTML = '<p style="color:#666;text-align:center;padding:20px;">Loading drivers...</p>';
+
+            try {
+                var drivers = await apiCall('GET', '/drivers');
+
+                if (drivers.length === 0) {
+                    container.innerHTML = '<p style="color:#666;text-align:center;padding:20px;">No drivers available right now.</p>';
+                    return;
+                }
+
+                var html = '';
+                drivers.forEach(function(driver) {
+                    html += '<div class="service-card">' +
+                        '<h4>' + driver.name + '</h4>' +
+                        '<p class="service-type">' + (driver.vehicle_type || 'Car') + ' • ' + (driver.city || '') + '</p>' +
+                        '<p>⭐ ' + (driver.rating || '4.5') + '</p>' +
+                        '<button class="booking-btn" onclick="viewDriverDetails(\'' + driver.name + '\', \'' + (driver.vehicle_type || 'Car') + '\', \'' + (driver.city || '') + '\', \'' + (driver.rating || '4.5') + '\', \'0\', \'' + (driver.vehicle_number || '') + '\', \'' + (driver.vehicle_brand || '') + '\', \'' + (driver.phone || '') + '\')">' +
+                        'View Details</button>' +
+                        '</div>';
+                });
+                container.innerHTML = html;
+            } catch (err) {
+                container.innerHTML = '<p style="color:#666;text-align:center;padding:20px;">Could not load drivers. Is the server running?</p>';
+            }
+        }
+        
+        // Book a guide - create booking request
+        async function bookGuide() {
+            var days = document.getElementById('bookingDays').value;
+            var date = document.getElementById('bookingDate').value;
+            var total = document.getElementById('bookingTotal').textContent;
+
+            if (!date) { alert('Please select a date for your booking!'); return; }
+
+            var user = getCurrentUser();
+            if (!user) { alert('Please login first!'); return; }
+
+            try {
+                await apiCall('POST', '/bookings', {
+                    guide_name: currentGuideName,
+                    tour_type: document.getElementById('guideDetailTour').textContent,
+                    booking_date: date,
+                    days: days,
+                    price: total
+                });
+                alert('Booking Confirmed!\n\nGuide: ' + currentGuideName + '\nDuration: ' + days + ' day(s)\nDate: ' + date + '\nTotal: ' + total + '\n\nThe guide will contact you soon!');
+                closeGuideDetails();
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+        
+        // Load ride requests for driver dashboard
+        async function loadDriverRideRequests() {
+            var container = document.getElementById('rideRequests');
+            if (!container) return;
+
+            try {
+                var requests = await apiCall('GET', '/rides/pending');
+
+                if (requests.length === 0) {
+                    container.innerHTML = '<p style="color:#666;text-align:center;padding:20px;">No ride requests yet. Check back later!</p>';
+                    return;
+                }
+
+                var html = '';
+                requests.forEach(function(r) {
+                    html += '<div class="dashboard-card request-card" id="ride-' + r.id + '">' +
+                        '<h4>' + r.traveler_name + ' - ' + (r.vehicle_type || '') + '</h4>' +
+                        '<p class="route">📍 ' + r.pickup + ' → ' + r.drop_location + '</p>' +
+                        '<p class="meta">📱 ' + r.traveler_phone + '</p>' +
+                        '<p class="price">💰 ₹' + r.price + '</p>' +
+                        '<div class="action-buttons">' +
+                        '<button class="accept-btn" onclick="acceptRideRequest(' + r.id + ')">Accept</button>' +
+                        '<button class="decline-btn" onclick="declineRideRequest(' + r.id + ')">Decline</button>' +
+                        '</div></div>';
+                });
+                container.innerHTML = html;
+            } catch (err) {
+                container.innerHTML = '<p style="color:#666;text-align:center;padding:20px;">Could not load ride requests.</p>';
+            }
+        }
+        
+        // Accept ride request
+        async function acceptRideRequest(id) {
+            try {
+                var data = await apiCall('PUT', '/rides/' + id + '/accept');
+                alert('Ride accepted! Contact the traveler: ' + (data.ride ? data.ride.traveler_phone : ''));
+                document.getElementById('ride-' + id).remove();
+                loadDriverStats();
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+
+        // Complete a ride
+        async function completeRide(id) {
+            try {
+                await apiCall('PUT', '/rides/' + id + '/complete');
+                alert('Ride marked as completed!');
+                loadDriverStats();
+                location.reload();
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+
+        // Decline ride request
+        async function declineRideRequest(id) {
+            try {
+                await apiCall('PUT', '/rides/' + id + '/decline');
+                document.getElementById('ride-' + id).remove();
+                alert('Ride declined.');
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+        
+        // Load guide bookings for guide dashboard
+        async function loadGuideBookings() {
+            var container = document.getElementById('bookingRequests');
+            if (!container) return;
+
+            try {
+                var bookings = await apiCall('GET', '/bookings/pending');
+
+                if (bookings.length === 0) {
+                    container.innerHTML = '<p style="color:#666;text-align:center;padding:20px;">No booking requests yet. Check back later!</p>';
+                    return;
+                }
+
+                var html = '';
+                bookings.forEach(function(b) {
+                    html += '<div class="dashboard-card request-card" id="booking-' + b.id + '">' +
+                        '<h4>' + b.tour_type + '</h4>' +
+                        '<p class="route">📍 Date: ' + b.booking_date + '</p>' +
+                        '<p class="meta">👤 ' + b.traveler_name + ' • 📱 ' + b.traveler_phone + '</p>' +
+                        '<p class="meta">🕐 ' + b.days + ' Day(s)</p>' +
+                        '<p class="price">💰 ' + b.price + '</p>' +
+                        '<div class="action-buttons">' +
+                        '<button class="accept-btn" onclick="acceptGuideBooking(' + b.id + ')">Accept</button>' +
+                        '<button class="decline-btn" onclick="declineGuideBooking(' + b.id + ')">Decline</button>' +
+                        '</div></div>';
+                });
+                container.innerHTML = html;
+            } catch (err) {
+                container.innerHTML = '<p style="color:#666;text-align:center;padding:20px;">Could not load bookings.</p>';
+            }
+        }
+
+        // Accept guide booking
+        async function acceptGuideBooking(id) {
+            try {
+                var data = await apiCall('PUT', '/bookings/' + id + '/accept');
+                alert('Booking accepted! Contact the traveler: ' + (data.booking ? data.booking.traveler_phone : ''));
+                document.getElementById('booking-' + id).remove();
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+
+        // Decline guide booking
+        async function declineGuideBooking(id) {
+            try {
+                await apiCall('PUT', '/bookings/' + id + '/decline');
+                document.getElementById('booking-' + id).remove();
+                alert('Booking declined.');
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+        
+        // Show driver dashboard with real data
+        function showDriverDashboard() {
+            document.getElementById('driverDashboard').classList.remove('hidden');
+            loadDriverRideRequests();
+            loadDriverStats();
+        }
+
+        // Load driver stats from API
+        async function loadDriverStats() {
+            try {
+                var stats = await apiCall('GET', '/driver/stats');
+                document.getElementById('driverRating').textContent = '⭐ ' + (stats.rating || '0');
+                document.getElementById('driverTotalRides').textContent = stats.total_rides + ' rides';
+                document.getElementById('driverTodayEarnings').textContent = '₹' + stats.today_earnings;
+                document.getElementById('driverTodayRides').textContent = stats.today_rides + ' rides today';
+                document.getElementById('driverTotalEarnings').textContent = '₹' + stats.total_earnings;
+                document.getElementById('driverAllTimeRides').textContent = stats.total_rides + ' total rides';
+            } catch (err) {
+                // Silently fail - stats are not critical
+            }
+        }
+
+        // Show guide dashboard with real data
+        function showGuideDashboard() {
+            document.getElementById('guideDashboard').classList.remove('hidden');
+            loadGuideBookings();
+        }
+
+        // Load reviews from API
+        async function loadReviews() {
+            var container = document.getElementById('reviewsList');
+            if (!container) return;
+            try {
+                var reviews = await apiCall('GET', '/reviews');
+                if (reviews.length === 0) {
+                    container.innerHTML = '<p style="color:#666;text-align:center;padding:15px;">No reviews yet.</p>';
+                    return;
+                }
+                container.innerHTML = reviews.map(function(r) {
+                    return '<div class="review-card"><h4>' + r.rating + '</h4><p>"' + r.text + '"</p><small>- ' + r.reviewer_name + ' (' + r.service + ')</small></div>';
+                }).join('');
+            } catch (err) {
+                container.innerHTML = '<p style="color:#666;text-align:center;padding:15px;">Could not load reviews.</p>';
+            }
+        }
+
+        // Check if user is already logged in
+        function checkLoginStatus() {
+            var user = getCurrentUser();
+            if (user) {
+                showDashboard(user.role);
+                document.getElementById('logoutBtn').classList.remove('hidden');
+            }
+        }
+
+        // Show About Us page
+        function showAboutUs() {
+            var pages = ['home', 'loginPage', 'travelerDashboard', 'driverDashboard', 'guideDashboard'];
+            pages.forEach(function(id) {
+                var element = document.getElementById(id);
+                if (element) {
+                    element.classList.add('hidden');
+                }
+            });
+            document.getElementById('aboutUs').classList.remove('hidden');
+        }
+
+        // Go back to home
+        function goBack() {
+            document.getElementById('aboutUs').classList.add('hidden');
+            document.getElementById('home').classList.remove('hidden');
+        }
+
+        var currentRole = "";
+
+        // Show home page (role selection)
+        function showHome() {
+            document.getElementById('loginPage').classList.add('hidden');
+            document.getElementById('home').classList.remove('hidden');
+        }
+
+        // Show login page with selected role
+        function showLogin(role) {
+            currentRole = role;
+            document.getElementById('home').classList.add('hidden');
+            document.getElementById('loginPage').classList.remove('hidden');
+            // Set the role dropdown to the selected role
+            document.getElementById('signupRole').value = role;
+            showVerificationField(); // Show appropriate verification fields
+            showLoginForm();
+        }
+
+        // Show signup form
+        function showSignup() {
+            document.getElementById('authTitle').textContent = "Create Account";
+            document.getElementById('loginForm').classList.add('hidden');
+            document.getElementById('signupForm').classList.remove('hidden');
+        }
+
+        // Show login form
+        function showLoginForm() {
+            document.getElementById('authTitle').textContent = "Welcome Back";
+            document.getElementById('signupForm').classList.add('hidden');
+            document.getElementById('loginForm').classList.remove('hidden');
+        }
+
+        // Show verification field based on role
+        function showVerificationField() {
+            var role = document.getElementById('signupRole').value;
+            var travelerField = document.getElementById('travelerVerification');
+            var driverField = document.getElementById('driverVerification');
+            var guideField = document.getElementById('guideVerification');
+            
+            // Hide all verification fields first
+            travelerField.classList.add('hidden');
+            driverField.classList.add('hidden');
+            guideField.classList.add('hidden');
+            
+            // Show appropriate verification field based on role
+            if (role === 'traveler') {
+                travelerField.classList.remove('hidden');
+            } else if (role === 'driver') {
+                driverField.classList.remove('hidden');
+            } else if (role === 'guide') {
+                guideField.classList.remove('hidden');
+            }
+        }
+
+        // Login function
+        async function login() {
+            var email = document.getElementById('loginEmail').value.trim();
+            var password = document.getElementById('loginPassword').value;
+
+            if (!email || !password) {
+                alert('Please fill in all fields!');
+                return;
+            }
+
+            try {
+                var data = await apiCall('POST', '/login', { email, password });
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('currentUser', JSON.stringify(data.user));
+                document.getElementById('loginPage').classList.add('hidden');
+                showDashboard(data.user.role);
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+
+        // Signup function
+        async function signup() {
+            var name = document.getElementById('signupName').value.trim();
+            var email = document.getElementById('signupEmail').value.trim();
+            var phone = document.getElementById('signupPhone').value.trim();
+            var password = document.getElementById('signupPassword').value;
+            var confirmPassword = document.getElementById('signupConfirmPassword').value;
+            var role = document.getElementById('signupRole').value;
+
+            if (!name || !email || !phone || !password || password !== confirmPassword) {
+                alert('Please fill in all fields correctly!');
+                return;
+            }
+
+            if (role === 'traveler') {
+                var travelerId = document.getElementById('signupTravelerId').value.trim();
+                if (!travelerId) { alert('Please enter your ID number for verification!'); return; }
+            }
+            if (role === 'driver') {
+                var drivingLicense = document.getElementById('signupDrivingLicense').value.trim();
+                if (!drivingLicense) { alert('Please enter your Driving License number!'); return; }
+            }
+            if (role === 'guide') {
+                var aadhar = document.getElementById('signupAadhar').value.trim();
+                if (!aadhar) { alert('Please enter your Aadhar Card number!'); return; }
+                var age = document.getElementById('signupAge').value;
+                if (!age || age < 18) { alert('Please enter a valid age (18 or older)!'); return; }
+            }
+            if (password.length < 6) { alert('Password must be at least 6 characters!'); return; }
+
+            try {
+                var payload = {
+                    name, email, phone, password, role,
+                    traveler_id: document.getElementById('signupTravelerId') ? document.getElementById('signupTravelerId').value.trim() : '',
+                    traveler_id_type: document.getElementById('travelerIdType') ? document.getElementById('travelerIdType').value : '',
+                    driving_license: document.getElementById('signupDrivingLicense') ? document.getElementById('signupDrivingLicense').value.trim() : '',
+                    aadhar: document.getElementById('signupAadhar') ? document.getElementById('signupAadhar').value.trim() : '',
+                    age: document.getElementById('signupAge') ? document.getElementById('signupAge').value : '',
+                    emergency_contact: document.getElementById('signupEmergencyContact') ? document.getElementById('signupEmergencyContact').value.trim() : ''
+                };
+
+                var data = await apiCall('POST', '/signup', payload);
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('currentUser', JSON.stringify(data.user));
+                alert('Account created successfully!');
+                document.getElementById('loginPage').classList.add('hidden');
+                showDashboard(data.user.role);
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+
+        // Show dashboard based on role
+        function showDashboard(role) {
+            // Hide all dashboards first
+            var dashboards = ['travelerDashboard', 'driverDashboard', 'guideDashboard'];
+            dashboards.forEach(function(id) {
+                document.getElementById(id).classList.add('hidden');
+            });
+            
+            // Show the correct dashboard based on role
+            if (role === 'traveler') {
+                document.getElementById('travelerDashboard').classList.remove('hidden');
+                loadReviews();
+            } else if (role === 'driver') {
+                document.getElementById('driverDashboard').classList.remove('hidden');
+                loadDriverRideRequests();
+                loadDriverStats();
+            } else if (role === 'guide') {
+                document.getElementById('guideDashboard').classList.remove('hidden');
+            } else {
+                // Default - show guide dashboard for any other case
+                document.getElementById('guideDashboard').classList.remove('hidden');
+            }
+            
+            document.getElementById('logoutBtn').classList.remove('hidden');
+        }
+
+        // Logout function
+        function logout() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('currentUser');
+            var dashboards = ['travelerDashboard', 'driverDashboard', 'guideDashboard', 'loginPage', 'home', 'aboutUs'];
+            dashboards.forEach(function(id) {
+                var element = document.getElementById(id);
+                if (element) element.classList.add('hidden');
+            });
+            document.getElementById('home').classList.remove('hidden');
+            document.getElementById('logoutBtn').classList.add('hidden');
+        }
+
+        // Clear all data (for testing)
+        function clearAllData() {
+            if (confirm("Are you sure you want to clear all data? This will delete all accounts and reset the app.")) {
+                localStorage.clear();
+                alert("All data cleared! Please refresh the page.");
+                location.reload();
+            }
+        }
+
+        // Places data - Safe destinations with ratings
+        var placesData = {
+            "Pondicherry": {
+                "Nature": [
+                    { name: "Paradise Beach", rating: "⭐⭐⭐⭐⭐", count: 28, comment: "Beautiful!" },
+                    { name: "Auroville Gardens", rating: "⭐⭐⭐⭐", count: 42, comment: "Peaceful" }
+                ],
+                "Cafes": [
+                    { name: "Cafe des Arts", rating: "⭐⭐⭐⭐⭐", count: 56, comment: "Great!" },
+                    { name: "Coromandel Cafe", rating: "⭐⭐⭐⭐", count: 34, comment: "Nice" }
+                ],
+                "Adventure": [
+                    { name: "Scuba Diving", rating: "⭐⭐⭐⭐⭐", count: 19, comment: "Safe" },
+                    { name: "Surfing", rating: "⭐⭐⭐⭐", count: 23, comment: "Fun" }
+                ],
+                "Shopping": [
+                    { name: "Mission Street", rating: "⭐⭐⭐⭐", count: 67, comment: "Busy" },
+                    { name: "Sunday Market", rating: "⭐⭐⭐⭐⭐", count: 89, comment: "Bargains!" }
+                ]
+            },
+            "Coorg": {
+                "Nature": [
+                    { name: "Abbey Falls", rating: "⭐⭐⭐⭐⭐", count: 124, comment: "Must visit!" },
+                    { name: "Raja's Seat", rating: "⭐⭐⭐⭐", count: 98, comment: "Sunset!" }
+                ],
+                "Cafes": [
+                    { name: "Coffee Plantation", rating: "⭐⭐⭐⭐⭐", count: 58, comment: "Best coffee!" },
+                    { name: "Beans n Brews", rating: "⭐⭐⭐⭐", count: 41, comment: "Cozy" }
+                ],
+                "Adventure": [
+                    { name: "Tadiandamol Trek", rating: "⭐⭐⭐⭐⭐", count: 45, comment: "Safe" },
+                    { name: "River Rafting", rating: "⭐⭐⭐⭐", count: 32, comment: "Thrilling" }
+                ],
+                "Shopping": [
+                    { name: "Coorg Spice Market", rating: "⭐⭐⭐⭐", count: 73, comment: "Authentic" },
+                    { name: "Madikeri Shops", rating: "⭐⭐⭐⭐⭐", count: 89, comment: "Souvenirs" }
+                ]
+            },
+            "Jaipur": {
+                "Nature": [
+                    { name: "Sisodia Garden", rating: "⭐⭐⭐⭐", count: 45, comment: "Peaceful" },
+                    { name: "Kanak Vrindavan", rating: "⭐⭐⭐⭐⭐", count: 62, comment: "Beautiful" }
+                ],
+                "Cafes": [
+                    { name: "Tapri Central", rating: "⭐⭐⭐⭐⭐", count: 89, comment: "Chai!" },
+                    { name: "Wind View Cafe", rating: "⭐⭐⭐⭐", count: 67, comment: "Views" }
+                ],
+                "Adventure": [
+                    { name: "Fort Cycling", rating: "⭐⭐⭐⭐⭐", count: 38, comment: "Adventure" },
+                    { name: "Hot Air Balloon", rating: "⭐⭐⭐⭐⭐", count: 156, comment: "Unforgettable!" }
+                ],
+                "Shopping": [
+                    { name: "Bapu Bazaar", rating: "⭐⭐⭐⭐⭐", count: 234, comment: "Textiles!" },
+                    { name: "Johari Bazaar", rating: "⭐⭐⭐⭐", count: 187, comment: "Jewelry" }
+                ]
+            }
+        };
+
+        // Create trip and show recommendations
+        function createTrip() {
+            var destination = document.getElementById('tripDestination').value;
+            var interest = document.getElementById('tripInterest').value;
+            var fromDate = document.getElementById('tripFromDate').value;
+            var toDate = document.getElementById('tripToDate').value;
+            
+            // Validate dates
+            if (fromDate && toDate) {
+                if (new Date(toDate) < new Date(fromDate)) {
+                    alert("To Date must be after From Date!");
+                    return;
+                }
+            }
+            
+            // Calculate number of days
+            var daysText = "";
+            if (fromDate && toDate) {
+                var from = new Date(fromDate);
+                var to = new Date(toDate);
+                var days = Math.ceil((to - from) / (1000 * 60 * 60 * 24)) + 1;
+                daysText = " (" + days + " day" + (days > 1 ? "s" : "") + ")";
+            }
+            
+            var places = placesData[destination][interest];
+            var dateRange = "";
+            if (fromDate && toDate) {
+                dateRange = '<p style="color:#ec4899;font-weight:600;margin-bottom:15px;">📅 ' + fromDate + ' to ' + toDate + daysText + '</p>';
+            } else if (fromDate) {
+                dateRange = '<p style="color:#ec4899;font-weight:600;margin-bottom:15px;">📅 Starting from: ' + fromDate + '</p>';
+            }
+            
+            var html = '<h3 style="color:#333;margin-bottom:15px">Safe Places in ' + destination + '</h3>';
+            html += dateRange;
+            
+            places.forEach(function(place) {
+                html += '<div class="place-card">' +
+                    '<h4>' + place.name + '</h4>' +
+                    '<p><span class="rating">' + place.rating + '</span> <span class="reviews-count">(' + place.count + ' reviews)</span></p>' +
+                    '<p class="comment">"' + place.comment + '"</p>' +
+                    '<span class="safe-badge">✓ Safe for women</span>' +
+                    '</div>';
+            });
+
+            document.getElementById('recommendations').innerHTML = html;
+            document.getElementById('recommendations').classList.remove('hidden');
+        }
+
+        // Submit review
+        function submitReview() {
+            var name = document.getElementById('reviewerName').value;
+            var text = document.getElementById('reviewText').value;
+            var service = document.getElementById('reviewService').value;
+            var rating = document.getElementById('reviewRating').value;
+
+            if (!name || !text) {
+                alert("Please fill in all fields!");
+                return;
+            }
+
+            var reviews = JSON.parse(localStorage.userReviews);
+            reviews.unshift({
+                name: name,
+                text: text,
+                service: service,
+                rating: rating
+            });
+
+            localStorage.userReviews = JSON.stringify(reviews);
+            loadReviews();
+
+            document.getElementById('reviewerName').value = "";
+            document.getElementById('reviewText').value = "";
+            
+            alert("Thank you for your review!");
+        }
+
+        // Driver availability toggle
+        function toggleAvailability() {
+            var checkbox = document.getElementById('driverAvailability');
+            var text = document.getElementById('availabilityText');
+            
+            if (checkbox.checked) {
+                text.textContent = "You are ONLINE";
+                text.className = "availability-status";
+            } else {
+                text.textContent = "You are OFFLINE";
+                text.className = "availability-status offline";
+            }
+        }
+
+        // Accept ride
+        function acceptRide(button) {
+            var card = button.closest('.dashboard-card');
+            alert("Ride accepted! Customer has been notified.");
+
+            var myRides = document.getElementById('myRides');
+            var newRide = document.createElement('div');
+            newRide.className = 'dashboard-card completed-card';
+            newRide.innerHTML = '<h4>Accepted</h4><p class="route">' + card.querySelector('.route').textContent + '</p><p class="price">Status: Arriving...</p>';
+            
+            myRides.insertBefore(newRide, myRides.firstChild);
+            card.remove();
+        }
+
+        // Decline ride
+        function declineRide(button) {
+            button.closest('.dashboard-card').remove();
+            alert("Ride declined.");
+        }
+
+        // Guide availability toggle
+        function toggleGuideAvailability() {
+            var checkbox = document.getElementById('guideAvailability');
+            var text = document.getElementById('guideAvailabilityText');
+            
+            if (checkbox.checked) {
+                text.textContent = "You are AVAILABLE";
+                text.className = "availability-status";
+            } else {
+                text.textContent = "You are UNAVAILABLE";
+                text.className = "availability-status offline";
+            }
+        }
+
+        // Accept booking
+        function acceptBooking(button) {
+            var card = button.closest('.dashboard-card');
+            alert("Booking accepted! Traveler has been notified.");
+
+            var myBookings = document.getElementById('myBookings');
+            var newBooking = document.createElement('div');
+            newBooking.className = 'dashboard-card completed-card';
+            newBooking.innerHTML = '<h4>Confirmed</h4><p class="route">' + card.querySelector('.route').textContent + '</p><p class="price">Status: Confirmed</p>';
+            
+            myBookings.insertBefore(newBooking, myBookings.firstChild);
+            card.remove();
+        }
+
+        // Decline booking
+        function declineBooking(button) {
+            button.closest('.dashboard-card').remove();
+            alert("Booking declined.");
+        }
+
+        // Tab Navigation for Traveler Dashboard
+        function showTravelerTab(tabName) {
+            // Hide all tab contents
+            var tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(function(content) {
+                content.classList.add('hidden');
+            });
+            
+            // Remove active class from all tab buttons
+            var tabBtns = document.querySelectorAll('.tab-btn');
+            tabBtns.forEach(function(btn) {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            document.getElementById('tab-' + tabName).classList.remove('hidden');
+            
+            // Add active class to clicked button (find it by onclick attribute)
+            var buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(function(btn) {
+                if (btn.getAttribute('onclick').includes(tabName)) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        // Tab Navigation for Driver Dashboard
+        function showDriverTab(tabName) {
+            // Hide all driver tab contents
+            var driverTabs = document.querySelectorAll('#driverDashboard .tab-content');
+            driverTabs.forEach(function(content) {
+                content.classList.add('hidden');
+            });
+            
+            // Remove active class from all driver tab buttons
+            var driverButtons = document.querySelectorAll('#driverDashboard .tab-btn');
+            driverButtons.forEach(function(btn) {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            document.getElementById('driverTab-' + tabName).classList.remove('hidden');
+            
+            // Add active class to clicked button
+            var buttons = document.querySelectorAll('#driverDashboard .tab-btn');
+            buttons.forEach(function(btn) {
+                if (btn.getAttribute('onclick').includes(tabName)) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        // Save Driver Profile
+        async function saveDriverProfile() {
+            var vehicleType = document.getElementById('driverVehicleType').value;
+            var vehicleBrand = document.getElementById('driverVehicleBrand').value.trim();
+            var vehicleNumber = document.getElementById('driverVehicleNumber').value.trim();
+            var city = document.getElementById('driverCity').value;
+            var price = document.getElementById('driverPrice').value;
+
+            if (!vehicleBrand || !vehicleNumber || !price) {
+                alert('Please fill in all vehicle details!');
+                return;
+            }
+
+            try {
+                await apiCall('PUT', '/vehicle', {
+                    vehicle_type: vehicleType,
+                    vehicle_brand: vehicleBrand,
+                    vehicle_number: vehicleNumber,
+                    city: city,
+                    price_per_ride: price
+                });
+                alert('Vehicle details saved successfully!');
+                document.getElementById('driverProfileSaved').innerHTML =
+                    '<div style="background:#dcfce7;padding:15px;border-radius:10px;margin-top:15px;">' +
+                    '<h4 style="color:#166534;margin-bottom:10px;">✓ Saved Vehicle Details</h4>' +
+                    '<p style="color:#333;margin:5px 0;"><strong>Type:</strong> ' + vehicleType + '</p>' +
+                    '<p style="color:#333;margin:5px 0;"><strong>Vehicle:</strong> ' + vehicleBrand + '</p>' +
+                    '<p style="color:#333;margin:5px 0;"><strong>Number:</strong> ' + vehicleNumber + '</p>' +
+                    '<p style="color:#333;margin:5px 0;"><strong>City:</strong> ' + city + '</p>' +
+                    '<p style="color:#333;margin:5px 0;"><strong>Price:</strong> ₹' + price + '</p>' +
+                    '</div>';
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+
+        // Tab Navigation for Guide Dashboard
+        function showGuideTab(tabName) {
+            // Hide all guide tab contents
+            var guideTabs = document.querySelectorAll('#guideDashboard .tab-content');
+            guideTabs.forEach(function(content) {
+                content.classList.add('hidden');
+            });
+            
+            // Remove active class from all guide tab buttons
+            var guideButtons = document.querySelectorAll('#guideDashboard .tab-btn');
+            guideButtons.forEach(function(btn) {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            document.getElementById('guideTab-' + tabName).classList.remove('hidden');
+            
+            // Add active class to clicked button
+            var buttons = document.querySelectorAll('#guideDashboard .tab-btn');
+            buttons.forEach(function(btn) {
+                if (btn.getAttribute('onclick').includes(tabName)) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        // Save Guide Services
+        async function saveGuideServices() {
+            var serviceName = document.getElementById('guideServiceName').value.trim();
+            var city = document.getElementById('guideServiceCity').value;
+            var serviceType = document.getElementById('guideServiceType').value;
+            var description = document.getElementById('guideServiceDesc').value.trim();
+            var price = document.getElementById('guideServicePrice').value;
+
+            if (!serviceName || !description || !price) {
+                alert('Please fill in all service details!');
+                return;
+            }
+
+            try {
+                await apiCall('POST', '/guide-services', {
+                    service_name: serviceName,
+                    city: city,
+                    service_type: serviceType,
+                    description: description,
+                    price: price
+                });
+                alert('Service added successfully!');
+                document.getElementById('guideServiceName').value = '';
+                document.getElementById('guideServiceDesc').value = '';
+                document.getElementById('guideServicePrice').value = '';
+
+                // Reload services
+                var services = await apiCall('GET', '/guide-services/my');
+                var html = '<div style="background:#dcfce7;padding:15px;border-radius:10px;margin-top:15px;">' +
+                    '<h4 style="color:#166534;margin-bottom:10px;">✓ Your Services</h4>';
+                services.forEach(function(s) {
+                    html += '<div style="background:white;padding:12px;border-radius:8px;margin-bottom:10px;">' +
+                        '<p style="color:#333;margin:5px 0;font-weight:600;">' + s.service_name + '</p>' +
+                        '<p style="color:#666;font-size:13px;margin:5px 0;">📍 ' + s.city + ' • ' + s.service_type + '</p>' +
+                        '<p style="color:#555;font-size:13px;margin:5px 0;">' + s.description + '</p>' +
+                        '<p style="color:#ec4899;font-weight:600;margin:5px 0;">₹' + s.price + '/person</p>' +
+                        '</div>';
+                });
+                html += '</div>';
+                document.getElementById('guideServicesSaved').innerHTML = html;
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+
+        // Toilets data - nearby toilets information
+        var toiletsData = {
+            "Pondicherry": [
+                { name: "Paradise Beach Public Toilet", type: "Public Toilet", address: "Paradise Beach Road", distance: "0.5 km", rating: "⭐⭐⭐⭐", clean: true, womenOnly: false },
+                { name: "Promenade Beach Toilet", type: "Public Toilet", address: "Promenade Beach", distance: "1.2 km", rating: "⭐⭐⭐⭐⭐", clean: true, womenOnly: true },
+                { name: "Auroville Public Toilet", type: "Public Toilet", address: "Auroville Main Road", distance: "2.5 km", rating: "⭐⭐⭐⭐", clean: true, womenOnly: false },
+                { name: "Le Cafe Toilet", type: "Hotel/Restaurant", address: "Beach Road", distance: "0.8 km", rating: "⭐⭐⭐⭐⭐", clean: true, womenOnly: false },
+                { name: "Pondicherry Railway Station", type: "Railway Station", address: "Railway Station Road", distance: "3 km", rating: "⭐⭐⭐", clean: false, womenOnly: false }
+            ],
+            "Coorg": [
+                { name: "Madikeri Bus Stand Toilet", type: "Bus Stand", address: "Madikeri Bus Stand", distance: "0.3 km", rating: "⭐⭐⭐", clean: true, womenOnly: false },
+                { name: "Abbey Falls Toilet", type: "Public Toilet", address: "Abbey Falls Road", distance: "5 km", rating: "⭐⭐⭐⭐", clean: true, womenOnly: false },
+                { name: "Raja's Seat Toilet", type: "Public Toilet", address: "Raja's Seat Garden", distance: "1 km", rating: "⭐⭐⭐⭐", clean: true, womenOnly: true },
+                { name: "Coorg Coffee Resort Toilet", type: "Hotel/Restaurant", address: "Coffee Plantations", distance: "4 km", rating: "⭐⭐⭐⭐⭐", clean: true, womenOnly: false },
+                { name: " Kushalnagar Toilet", type: "Public Toilet", address: "Kushalnagar Main Road", distance: "8 km", rating: "⭐⭐⭐", clean: false, womenOnly: false }
+            ],
+            "Jaipur": [
+                { name: "Hawa Mahal Public Toilet", type: "Public Toilet", address: "Hawa Mahal Road", distance: "0.5 km", rating: "⭐⭐⭐⭐", clean: true, womenOnly: false },
+                { name: "City Palace Toilet", type: "Public Toilet", address: "City Palace Complex", distance: "1 km", rating: "⭐⭐⭐⭐⭐", clean: true, womenOnly: false },
+                { name: "Amber Fort Toilet", type: "Public Toilet", address: "Amber Fort Entrance", distance: "6 km", rating: "⭐⭐⭐⭐", clean: true, womenOnly: false },
+                { name: "Rajmandir Cinema Toilet", type: "Private/Paid", address: "C Scheme", distance: "2 km", rating: "⭐⭐⭐⭐⭐", clean: true, womenOnly: false },
+                { name: "Jaipur Railway Station", type: "Railway Station", address: "Railway Station Road", distance: "3 km", rating: "⭐⭐⭐", clean: false, womenOnly: false },
+                { name: "Jantar Mantar Toilet", type: "Public Toilet", address: "Jantar Mantar Road", distance: "1.5 km", rating: "⭐⭐⭐⭐", clean: true, womenOnly: true }
+            ],
+            "Bangalore": [
+                { name: "MG Road Public Toilet", type: "Public Toilet", address: "MG Road", distance: "0.5 km", rating: "⭐⭐⭐⭐", clean: true, womenOnly: false },
+                { name: "Koramangala Toilet", type: "Public Toilet", address: "Koramangala 5th Block", distance: "2 km", rating: "⭐⭐⭐⭐⭐", clean: true, womenOnly: false },
+                { name: "UB City Mall Toilet", type: "Private/Paid", address: "Vittal Mallya Road", distance: "1.5 km", rating: "⭐⭐⭐⭐⭐", clean: true, womenOnly: false },
+                { name: "Bangalore Railway Station", type: "Railway Station", address: "Railway Station Road", distance: "4 km", rating: "⭐⭐⭐", clean: false, womenOnly: false },
+                { name: "Majestic Bus Stand", type: "Bus Stand", address: "Shivaji Nagar", distance: "3 km", rating: "⭐⭐⭐", clean: false, womenOnly: false }
+            ],
+            "Chennai": [
+                { name: "Marina Beach Toilet", type: "Public Toilet", address: "Marina Beach Road", distance: "0.8 km", rating: "⭐⭐⭐⭐", clean: true, womenOnly: false },
+                { name: "T Nagar Public Toilet", type: "Public Toilet", address: "T Nagar", distance: "2 km", rating: "⭐⭐⭐⭐", clean: true, womenOnly: false },
+                { name: "Express Avenue Mall", type: "Private/Paid", address: "Royapettah", distance: "3 km", rating: "⭐⭐⭐⭐⭐", clean: true, womenOnly: false },
+                { name: "Chennai Central Railway", type: "Railway Station", address: "Broadway", distance: "4 km", rating: "⭐⭐⭐", clean: false, womenOnly: false },
+                { name: "Anna Square Toilet", type: "Public Toilet", address: "Anna Square", distance: "1.5 km", rating: "⭐⭐⭐⭐", clean: true, womenOnly: true }
+            ]
+        };
+
+        // Find nearby toilets function
+        function findNearbyToilets() {
+            var location = document.getElementById('toiletLocation').value;
+            var type = document.getElementById('toiletType').value;
+            
+            var toilets = toiletsData[location];
+            var filteredToilets = toilets;
+            
+            if (type !== "All Types") {
+                filteredToilets = toilets.filter(function(t) {
+                    return t.type === type;
+                });
+            }
+            
+            var html = '<h3 style="color:#333;margin-bottom:15px">Toilets in ' + location + '</h3>';
+            
+            if (filteredToilets.length === 0) {
+                html += '<p style="color:#666;padding:20px;text-align:center;">No toilets found for selected type.</p>';
+            } else {
+                filteredToilets.forEach(function(toilet) {
+                    var badges = '';
+                    if (toilet.clean) {
+                        badges += '<span class="clean-badge">✓ Clean</span>';
+                    }
+                    if (toilet.womenOnly) {
+                        badges += '<span class="women-only-badge">👩 Women Only</span>';
+                    }
+                    
+                    html += '<div class="toilet-card">' +
+                        '<h4>' + toilet.name + '</h4>' +
+                        '<p class="toilet-type">' + toilet.type + '</p>' +
+                        '<p class="toilet-address">📍 ' + toilet.address + '</p>' +
+                        '<p class="toilet-distance">📏 ' + toilet.distance + ' away</p>' +
+                        '<p class="toilet-rating">' + toilet.rating + '</p>' +
+                        badges +
+                        '</div>';
+                });
+            }
+            
+            document.getElementById('toiletResults').innerHTML = html;
+            document.getElementById('toiletResults').classList.remove('hidden');
+        }
+
+        // Use current location function
+        function useCurrentLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+                        var lat = position.coords.latitude;
+                        var lon = position.coords.longitude;
+                        
+                        // Approximate city coordinates (India)
+                        var cities = [
+                            { name: "Bangalore", lat: 12.9716, lon: 77.5946 },
+                            { name: "Chennai", lat: 13.0827, lon: 80.2707 },
+                            { name: "Jaipur", lat: 26.9124, lon: 75.7873 },
+                            { name: "Pondicherry", lat: 11.9416, lon: 79.8083 },
+                            { name: "Coorg", lat: 12.3375, lon: 75.8069 }
+                        ];
+                        
+                        // Find nearest city
+                        var nearestCity = cities[0];
+                        var minDistance = Infinity;
+                        
+                        cities.forEach(function(city) {
+                            var distance = Math.sqrt(Math.pow(city.lat - lat, 2) + Math.pow(city.lon - lon, 2));
+                            if (distance < minDistance) {
+                                minDistance = distance;
+                                nearestCity = city;
+                            }
+                        });
+                        
+                        // Set the dropdown to the nearest city
+                        document.getElementById('toiletLocation').value = nearestCity.name;
+                        
+                        alert("Location detected! Found nearest city: " + nearestCity.name);
+                        
+                        // Automatically find toilets for the detected location
+                        findNearbyToilets();
+                    },
+                    function(error) {
+                        alert("Unable to get your location. Please check your browser permissions.");
+                    }
+                );
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        // Emergency Contact
+        var emergencyContact = "";
+
+        // Show Emergency Modal
+        async function showEmergencyModal() {
+            var modal = document.getElementById('emergencyModal');
+            modal.style.display = 'flex';
+            
+            // Get emergency contact from API
+            var user = getCurrentUser();
+            if (user) {
+                try {
+                    var contacts = await apiCall('GET', '/emergency-contacts');
+                    if (contacts.length > 0) {
+                        emergencyContact = contacts[0].phone;
+                    }
+                } catch (err) {}
+            }
+        }
+
+        // Close Emergency Modal
+        function closeEmergencyModal() {
+            var modal = document.getElementById('emergencyModal');
+            modal.style.display = 'none';
+        }
+
+        // Call Emergency Contact
+        function callEmergency() {
+            if (!emergencyContact) {
+                alert("No emergency contact found. Please add an emergency contact in your profile.");
+                closeEmergencyModal();
+                return;
+            }
+            
+            // Attempt to make a phone call
+            window.location.href = "tel:" + emergencyContact;
+            alert("Calling " + emergencyContact + "...");
+            closeEmergencyModal();
+        }
+
+        // Send Emergency Message
+        function sendEmergencyMessage() {
+            if (!emergencyContact) {
+                alert("No emergency contact found. Please add an emergency contact in your profile.");
+                closeEmergencyModal();
+                return;
+            }
+            
+            // Get current location if available
+            var locationInfo = "";
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+                        var lat = position.coords.latitude;
+                        var lon = position.coords.longitude;
+                        locationInfo = " My current location: https://maps.google.com/?q=" + lat + "," + lon;
+                        sendSMS(locationInfo);
+                    },
+                    function(error) {
+                        sendSMS(locationInfo);
+                    }
+                );
+            } else {
+                sendSMS(locationInfo);
+            }
+        }
+
+        function sendSMS(locationInfo) {
+            var user = getCurrentUser();
+            var userName = user ? user.name : "User";
+            
+            var message = "EMERGENCY! I need help. This is " + userName + ". I am in an emergency situation." + locationInfo;
+            
+            // Open SMS app with pre-filled message
+            window.location.href = "sms:" + emergencyContact + "?body=" + encodeURIComponent(message);
+            
+            alert("Emergency message will be sent to " + emergencyContact);
+            closeEmergencyModal();
+        }
+
+        // Alert Nearby Drivers
+        function alertNearbyDrivers() {
+            // Get current location if available
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+                        var lat = position.coords.latitude;
+                        var lon = position.coords.longitude;
+                        
+                        var locationLink = "https://maps.google.com/?q=" + lat + "," + lon;
+                        alert("🚨 EMERGENCY ALERT SENT!\n\nNearby women drivers have been notified of your emergency.\n\nYour location has been shared with available drivers nearby.\n\nLocation: " + locationLink + "\n\nHelp is on the way! Stay calm.");
+                    },
+                    function(error) {
+                        alert("🚨 EMERGENCY ALERT SENT!\n\nNearby women drivers have been notified of your emergency.\n\nPlease stay calm and safe.");
+                    }
+                );
+            } else {
+                alert("🚨 EMERGENCY ALERT SENT!\n\nNearby women drivers have been notified of your emergency.\n\nPlease stay calm and safe.");
+            }
+            closeEmergencyModal();
+        }
+
+        // Call Police
+        function callPolice() {
+            // Police emergency number in India is 100
+            var policeNumber = "100";
+            
+            // Try to get current location for sharing
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+                        var lat = position.coords.latitude;
+                        var lon = position.coords.longitude;
+                        var locationLink = "https://maps.google.com/?q=" + lat + "," + lon;
+                        
+                        alert("Calling Police (100)...\n\nYour location: " + locationLink + "\n\nStay calm, help is on the way!");
+                        
+                        // Make the call
+                        window.location.href = "tel:" + policeNumber;
+                    },
+                    function(error) {
+                        alert("Calling Police (100)...\n\nStay calm, help is on the way!");
+                        window.location.href = "tel:" + policeNumber;
+                    }
+                );
+            } else {
+                alert("Calling Police (100)...\n\nStay calm, help is on the way!");
+                window.location.href = "tel:" + policeNumber;
+            }
+            closeEmergencyModal();
+        }
+
+        // Save Emergency Contact
+        async function saveEmergencyContact() {
+            var name = document.getElementById('emergencyContactName').value.trim();
+            var phone = document.getElementById('emergencyContactPhone').value.trim();
+            var relation = document.getElementById('emergencyContactRelation').value;
+
+            if (!name || !phone) { alert('Please fill in all fields!'); return; }
+            if (phone.length < 10) { alert('Please enter a valid phone number!'); return; }
+
+            try {
+                await apiCall('POST', '/emergency-contacts', {
+                    contact_name: name,
+                    phone: phone,
+                    relationship: relation
+                });
+                alert('Emergency contact saved successfully!');
+                document.getElementById('emergencyContactName').value = '';
+                document.getElementById('emergencyContactPhone').value = '';
+                displaySavedContacts();
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+
+        // Display Saved Contacts
+        async function displaySavedContacts() {
+            var container = document.getElementById('savedContacts');
+            if (!container) return;
+            try {
+                var contacts = await apiCall('GET', '/emergency-contacts');
+                if (contacts.length === 0) {
+                    container.innerHTML = '<p style="color:#666;text-align:center;padding:15px;">No emergency contact saved yet.</p>';
+                    return;
+                }
+                var html = '';
+                contacts.forEach(function(c) {
+                    html += '<div style="background:#dcfce7;padding:15px;border-radius:10px;margin-top:15px;">' +
+                        '<h4 style="color:#166534;margin-bottom:10px;">✓ Emergency Contact</h4>' +
+                        '<p style="color:#333;margin:5px 0;"><strong>Name:</strong> ' + c.contact_name + '</p>' +
+                        '<p style="color:#333;margin:5px 0;"><strong>Phone:</strong> ' + c.phone + '</p>' +
+                        '<p style="color:#666;font-size:13px;margin:5px 0;"><strong>Relationship:</strong> ' + c.relationship + '</p>' +
+                        '</div>';
+                });
+                container.innerHTML = html;
+            } catch (err) {
+                container.innerHTML = '<p style="color:#666;text-align:center;padding:15px;">Could not load contacts.</p>';
+            }
+        }
+
+        // Initialize app on load
+        initializeApp();
+        checkLoginStatus();
+        // Load available drivers when Book a Cab tab is shown
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAvailableDrivers();
+        });
+
+        // Global variables for guide booking
+        var currentGuidePrice = 0;
+        var currentGuideName = "";
+
+        // View Guide Details
+        function viewGuideDetails(name, tourType, rating, age, phone, availability, description, price) {
+            currentGuideName = name;
+            
+            // Set guide details in modal
+            document.getElementById('guideDetailName').textContent = name;
+            document.getElementById('guideDetailTour').textContent = tourType;
+            document.getElementById('guideDetailRating').textContent = "⭐ " + rating;
+            document.getElementById('guideDetailAge').textContent = age;
+            document.getElementById('guideDetailPhone').textContent = phone;
+            
+            var availabilityText = document.getElementById('guideDetailAvailability');
+            availabilityText.textContent = availability;
+            availabilityText.style.color = availability === "Available" ? "#10b981" : "#ef4444";
+            
+            document.getElementById('guideDetailDesc').textContent = description;
+            document.getElementById('guideDetailPrice').textContent = price;
+            
+            // Extract price number
+            currentGuidePrice = parseInt(price.replace(/[^0-9]/g, ''));
+            
+            // Set default booking days
+            document.getElementById('bookingDays').value = "1";
+            
+            // Update total price
+            updateBookingTotal();
+            
+            // Show/hide booking section based on availability
+            var bookingSection = document.getElementById('bookingSection');
+            if (availability === "Unavailable") {
+                bookingSection.style.display = "none";
+            } else {
+                bookingSection.style.display = "block";
+            }
+            
+            // Show modal and prevent background scrolling
+            var modal = document.getElementById('guideDetailsModal');
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Update Booking Total
+        function updateBookingTotal() {
+            var days = parseInt(document.getElementById('bookingDays').value);
+            var total = days * currentGuidePrice;
+            document.getElementById('bookingTotal').textContent = "₹" + total.toLocaleString('en-IN');
+        }
+
+        // Book Guide
+        function bookGuide() {
+            var days = document.getElementById('bookingDays').value;
+            var date = document.getElementById('bookingDate').value;
+            
+            if (!date) {
+                alert("Please select a date for your booking!");
+                return;
+            }
+            
+            var total = document.getElementById('bookingTotal').textContent;
+            
+            alert("Booking Confirmed!\n\nGuide: " + currentGuideName + "\nDuration: " + days + " day(s)\nDate: " + date + "\nTotal: " + total + "\n\nThe guide will contact you soon!");
+            
+            closeGuideDetails();
+        }
+
+        // Close Guide Details Modal
+        function closeGuideDetails() {
+            var modal = document.getElementById('guideDetailsModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Global variables for booking details
+        var currentBookingTour = "";
+        var currentBookingGuide = "";
+        var currentBookingDestination = "";
+
+        // View Booking Details
+        function viewBookingDetails(tour, locations, date, duration, price, guide, destination) {
+            currentBookingTour = tour;
+            currentBookingGuide = guide;
+            currentBookingDestination = destination;
+            
+            // Set booking details in modal
+            document.getElementById('bookingDetailTitle').textContent = tour;
+            document.getElementById('bookingDetailTour').textContent = tour;
+            document.getElementById('bookingDetailLocations').textContent = locations;
+            document.getElementById('bookingDetailDate').textContent = date;
+            document.getElementById('bookingDetailDuration').textContent = duration;
+            document.getElementById('bookingDetailPrice').textContent = price;
+            document.getElementById('bookingDetailGuide').textContent = guide;
+            
+            // Clear previous review
+            document.getElementById('bookingReviewRating').value = "⭐⭐⭐⭐⭐ Excellent";
+            document.getElementById('bookingReviewText').value = "";
+            
+            // Show modal
+            var modal = document.getElementById('bookingDetailsModal');
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close Booking Details Modal
+        function closeBookingDetails() {
+            var modal = document.getElementById('bookingDetailsModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Submit Booking Review
+        async function submitBookingReview() {
+            var rating = document.getElementById('bookingReviewRating').value;
+            var text = document.getElementById('bookingReviewText').value;
+
+            if (!text) { alert('Please write your review!'); return; }
+
+            try {
+                await apiCall('POST', '/reviews', {
+                    text: text,
+                    service: 'Travel Guide - ' + currentBookingTour,
+                    rating: rating
+                });
+                alert('Thank you for your review!');
+                document.getElementById('bookingReviewText').value = '';
+                closeBookingDetails();
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+
+        // Load and display all registered user accounts
+        function loadUserAccounts() {
+            var users = JSON.parse(localStorage.users || "[]");
+            var container = document.getElementById('userAccountsList');
+            
+            if (users.length === 0) {
+                container.innerHTML = '<p style="color:#666;text-align:center;padding:20px;">No user accounts registered yet.</p>';
+                return;
+            }
+
+            // Group users by role
+            var travelers = users.filter(function(u) { return u.role === 'traveler'; });
+            var drivers = users.filter(function(u) { return u.role === 'driver'; });
+            var guides = users.filter(function(u) { return u.role === 'guide'; });
+
+            var html = '<div style="margin-bottom:20px;"><p style="color:#333;font-weight:600;margin-bottom:10px;">Total Users: ' + users.length + '</p></div>';
+            
+            // Travelers
+            if (travelers.length > 0) {
+                html += '<h4 style="color:#ec4899;margin:20px 0 10px 0;">🚗 Traveling Women (' + travelers.length + ')</h4>';
+                travelers.forEach(function(user) {
+                    html += createUserCard(user);
+                });
+            }
+
+            // Drivers
+            if (drivers.length > 0) {
+                html += '<h4 style="color:#10b981;margin:20px 0 10px 0;">🚙 Women Drivers (' + drivers.length + ')</h4>';
+                drivers.forEach(function(user) {
+                    html += createUserCard(user);
+                });
+            }
+
+            // Guides
+            if (guides.length > 0) {
+                html += '<h4 style="color:#f59e0b;margin:20px 0 10px 0;">🎯 Lady Travel Guides (' + guides.length + ')</h4>';
+                guides.forEach(function(user) {
+                    html += createUserCard(user);
+                });
+            }
+
+            container.innerHTML = html;
+        }
+
+        // Create user card HTML
+        function createUserCard(user) {
+            var roleBadge = '';
+            var roleColor = '';
+            
+            if (user.role === 'traveler') {
+                roleBadge = '🚗 Traveler';
+                roleColor = '#ec4899';
+            } else if (user.role === 'driver') {
+                roleBadge = '🚙 Driver';
+                roleColor = '#10b981';
+            } else if (user.role === 'guide') {
+                roleBadge = '🎯 Guide';
+                roleColor = '#f59e0b';
+            }
+
+            var details = '<p style="margin:5px 0;"><strong>📧 Email:</strong> ' + (user.email || 'N/A') + '</p>';
+            details += '<p style="margin:5px 0;"><strong>📱 Phone:</strong> ' + (user.phone || 'N/A') + '</p>';
+            
+            if (user.role === 'traveler' && user.travelerId) {
+                details += '<p style="margin:5px 0;"><strong>🪪 ID Type:</strong> ' + (user.travelerIdType || 'N/A') + '</p>';
+                details += '<p style="margin:5px 0;"><strong>🆔 ID Number:</strong> ' + user.travelerId + '</p>';
+            }
+            
+            if (user.role === 'driver' && user.drivingLicense) {
+                details += '<p style="margin:5px 0;"><strong>🚗 License:</strong> ' + user.drivingLicense + '</p>';
+            }
+            
+            if (user.role === 'guide') {
+                if (user.aadhar) {
+                    details += '<p style="margin:5px 0;"><strong>🪪 Aadhar:</strong> ' + user.aadhar + '</p>';
+                }
+                if (user.age) {
+                    details += '<p style="margin:5px 0;"><strong>🎂 Age:</strong> ' + user.age + ' years</p>';
+                }
+            }
+            
+            if (user.emergencyContact) {
+                details += '<p style="margin:5px 0;"><strong>🆘 Emergency Contact:</strong> ' + user.emergencyContact + '</p>';
+            }
+
+            return '<div style="background:#f9fafb;border-radius:12px;padding:15px;margin-bottom:12px;border-left:4px solid ' + roleColor + ';">' +
+                '<h5 style="color:' + roleColor + ';margin-bottom:10px;font-size:16px;">' + roleBadge + '</h5>' +
+                '<p style="margin:5px 0;font-weight:600;font-size:15px;">👤 ' + (user.name || 'N/A') + '</p>' +
+                details +
+                '</div>';
+        }
+    </script>
+
+</body>
+</html>
